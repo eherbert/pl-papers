@@ -1,0 +1,44 @@
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{xcolor}
+
+% hyphenation
+\usepackage[english]{babel}
+\selectlanguage{english}
+
+% allow more figures on a page
+\setcounter{topnumber}{10}
+\setcounter{bottomnumber}{10}
+\setcounter{totalnumber}{10}
+\setcounter{dbltopnumber}{10}
+\def\topfraction{1.0}
+\def\bottomfraction{1.0}
+\def\textfraction{0.0}
+\def\dbltopfraction{1.0}
+
+% set up to put page numbers in header
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{}
+\chead{}
+\rhead{\rm\thepage}
+\lfoot{}
+\cfoot{}
+\rfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% margins
+%\usepackage[letterpaper,top=2.0in,bottom=1.5in,left=1.5in,right=1.0in]
+% {geometry}
+\usepackage[top=2.0in,bottom=1.5in,left=1.5in,right=1.0in]{geometry}
+
+% author, title, and start date
+\newcommand{\theAuthor}{Emily Herbert}
+\newcommand{\theTitle}{Programming Languages Literature Review}
+\newcommand{\theStartDate}{September 28, 2018}
+\author{\theAuthor}
+\title{\theTitle}
+
+\colorlet{saved}{.}
+\newcommand{\question}[1]{\color[rgb]{1,0,0} #1 \color{saved}}
