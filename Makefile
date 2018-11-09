@@ -29,8 +29,5 @@ clean:
 	rm -rf *.lg
 	rm -rf *.tmp
 
-html:
-	htlatex $(FILE).tex
-
 read:
 	evince $(FILE).pdf &
