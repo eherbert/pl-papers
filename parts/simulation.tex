@@ -3,6 +3,13 @@
 \section{Scala}
 
 \begin{description}
+  \item[\href{https://www.researchgate.net/publication/267807039_Multi-agent_System_Simulation_in_Scala_An_Evaluation_of_Actors_for_Parallel_Simulation}{Multi-agent System Simulation in Scala: An Evaluation of Actors for Parallel Simulation}] {\cite{todd2011multi}.
+    \\ Proposes multi-agent simulation (MAS) in Scala that utilizes the Actor framework. Satisfies motivations for removing possibility of race conditions. Provides benchmarks comparing Actor framework to threads - Actor framework displays slower results, but the prospect of safer simulations justifies the slow-down.
+    \begin{itemize}
+      \item \question{This design is outdated. What would a modern design look like?}
+      \item \question{Would there be a motivation for simulation for RL agents?}
+      \item Scala's delimited continuations library.
+    \end{itemize}}
   \item[\href{https://informs-sim.org/wsc10papers/067.pdf}{Using Domain Specific Languages for Modeling and Simulation}] {\cite{miller2010using}.
     \\ Gives an overview of the Scalation simulation DSL, implemented in Scala. Discusses Scalation motivations and realizations, and how they make it a good fit for Scala. Mentions use of Actors for parallel simulation, but does not discuss further. System built on event graphs, "where the nodes represent types of events and the edges represent causal links between the events."
     \begin{itemize}
