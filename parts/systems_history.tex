@@ -6,7 +6,6 @@
     \item[\textbf{Summary}]
     \item[\textbf{Context}]
     \item[\textbf{Discussion Points}]
-    \item[\textbf{Interest Factor}]
     \item[\textbf{Significance}]
     \item[\textbf{Personal Assessment}]
 \end{description}
@@ -26,4 +25,36 @@
         Yet the "conclusion" focuses just on the arithmetic type mathematical advanecs. Hmm.
         (2) The proposed UNIVAC is claimed to "not forget" and "not make mistakes."
         We all know that that is not the case.
+\end{description}
+
+\section {The FORTRAN Automatic Coding System \cite{backus1957fortran}}
+
+\begin{description}
+    \item[\textbf{Summary}]
+        The paper proposes FORTRAN, a language resulting from a need to reduce computing overhead.
+        The authors report that the goal of FORTRAN is for programmers to be able to use a concise language to specify procedures, rather than writing the granual 704 code directly.
+        FORTRAN achieves this by introducing both a high level language a mechanism of automatic translation to produce optimized 704 code.
+        The language presented uses statements that modern day programmers would recognize - functions, loops, print, etc.
+
+        The technical contributions are quite great.
+        The FORTRAN language itself introduces new statements that programmers can use to write pseudo 704 code, with each FORTRAN statement translating to 4 to 20 704 statements.
+        This greatly reduces the time and effort required to write programs and debug.
+        The FORTRAN translator automatically translates FORTRAN statements to 704 statements, and while doing so it makes a number of optimizations that allow for efficient 704 code to be produces.
+        This 704 code may even be more efficient than what a programmer may have wrote directly, and the translator is able to detect patterns and optimizations for different high level ideas.
+        The translator also is able to catch a number of errors and help the programmer debug.
+    \item[\textbf{Context}]
+        This paper's goal was to develop a tool to make programming easier, and it does so by developing a high level representation of frequently used code and introducing a method of translating that high level representation to optimized low level code automatically.
+        Really, that goal hasn't changed much since this time.
+        Obviously languages and toolchains have evolved, but most modern languages employ this automatic translation/ optimization process, and for good reason.
+        It is likely that this paper laid a large portion of the foundation for modern languages.
+    \item[\textbf{Discussion Points}]
+        (1) Not a discussion question, but I belive last class it was said that FORTRAN was originally intended for researchers.
+        In retrospect it is easy to see why FORTRAN-like languages would be appealing for most programmers, not just researchers, but I am interested in how this transition arose at the time.
+        (2) Hmm, I actually keep getting kind of confused by the use of "subroutine" in each of these papers, how is a subroutine different than a function?
+        I read the other paper for this week first, and I was mentally translating "subroutine" to "function", but this paper makes a distinction.
+        Can we clarify the difference?
+    \item[\textbf{Significance}]
+        This paper was definitely significant, as it likely paved the way for most modern languages.
+        Not only does it introduce two major components, the lanaguage representation and the compiler, but it also presents a very compelling case for why each of these is useful.
+        This paper likely introduced a lot of motivation for creating tools that could help programmers be more efficient and more accurate.
 \end{description}
