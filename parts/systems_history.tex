@@ -58,3 +58,38 @@
         Not only does it introduce two major components, the lanaguage representation and the compiler, but it also presents a very compelling case for why each of these is useful.
         This paper likely introduced a lot of motivation for creating tools that could help programmers be more efficient and more accurate.
 \end{description}
+
+\section {Recursive Functions of Symbolic Expressions and Their Computation by Machine \cite{mccarthy1959recursive}}
+
+\begin{description}
+    \item[\textbf{Summary}]
+        This paper defines a formalism for defining potentialy recursive functions and proposes S-expressions, S-functions, and S-function apply, which together are a system of theoretical program representation that is independent from its machine implementation.
+        The paper then discusses the representation of S-expressions as lists in IBM 704 memory.
+        This work addressed a need to represent LISP symbolically, and it offered additional tools to be used in mathematical logic and theorem proving.
+
+        The key ideas include: S-expressions, symbolic expressions composed of ".", "(", ")", and an infinite set of atomic symbols.
+        Operations upon S-expressions.
+        M-expressions, or functions of S-expressions.
+        S-functions, which are described by M-expressions, and the S-function apply.
+        The implementation of S-expressions in 704 memory as lists, where the list structure is specifically mechanized to implement an early iteration of garbage collection.
+    \item[\textbf{Context}]
+        This paper discusses LISP for the IBM 704.
+        Technologies have changed dramatically, and we no longer use the IBM 704.
+        LISP is still used, and I'm sure its use cases have expanded past those listed in Section 4.
+        S-expressions are still frequently discussed, although I think because of their simplicity they are most discussed in a pedagogical context.
+        I ran into them when I was googling about Rust macros.
+    \item[\textbf{Discussion Points}]
+        (1) The description of the formalism and the methods reminded me of "An Introduction to the Theory of Lists" by Richard S. Bird, in the sense of, they both describe similar operations, one upon S-expressions and the other upon lists.
+        Any relationship there, or no?
+        This potential correlation seems most relavent to the section that discusses representing S-expressions as lists.
+        (2) It seems like the authors of this paper and the FORTRAN paper both naturally extended functions to include higher order functions.
+        Maybe this is just me not understanding things, but I would have expected higher order functions to be some crazy difficult problem, but I guess that is not the case.
+        (3) Section 4 lists that LISP was used to write the compiler to compile LISP programs.
+        I believe this is called "bootstrapping"?
+        Is this the first instance of this? / I forget what the FORTRAN compiler is written in.
+    \item[\textbf{Significance}]
+        This paper primarily proposes a theoretical program representation and secondarily presents the machine implementation.
+        This is in contrast to the FORTRAN paper, which integrated the "theoretical" language design into the physical implementation, and likely had significant impact on mathematical foundations of computer science.
+        This paper also likely laid foundations for garbage collection.
+    \item[\textbf{Personal Assessment}]
+\end{description}
