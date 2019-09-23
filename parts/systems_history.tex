@@ -93,3 +93,43 @@
         This paper also likely laid foundations for garbage collection.
     \item[\textbf{Personal Assessment}]
 \end{description}
+
+\section {Garbage Collection in an Uncooperative Environment \cite{boehm1988garbage}}
+
+\begin{description}
+    \item[\textbf{Summary}]
+        This paper discusses a method of garbage collection that does not require
+        any cooperation from the object code generated from the source program.
+        This means that garbage collection can be isolated - allowing for simplier
+        implementations in conventional compilers and for garbage collection
+        overhead to also be isolated such that programs that do not use garbage
+        collection no longer suffer from this incurred overhead.
+        
+        The garbage collection algorithm presented is the mark-sweep algorithm, which employs
+        two passes over the data to perform collection while gaurenteeing that
+        accessible data is never corrupted. The first pass "marks" all of the data
+        that is accessible by the program and the second pass returns inaccessible
+        objects to a list of free memory.
+
+        The authors discuss several issues that arise when thinkng about garbage
+        collection, but the most notable of their observations is that the
+        problem of whether or not a particular item is accessed in any possible
+        iteration of the program is not decidable. 
+    \item[\textbf{Context}]
+        Well, garbage collection is still used today, and it will continue to be used
+        for the forseeable future. I don't know enough about modern garbage collection
+        to synthesize how this paper may have influenced modern designs, but the
+        problems discussed in the paper are still problems faced today.
+    \item[\textbf{Discussion Points}]
+        Last class we discussed NVM (spelling?), which was something along the lines of "persistent memory". How does garbage collection work in this environment?
+\end{description}
+
+\section {Bringing the Web Up to Speed with WebAssembly \cite{haas2017bringing}}
+
+\begin{description}
+    \item[\textbf{Summary}]
+    \item[\textbf{Context}]
+    \item[\textbf{Discussion Points}]
+    \item[\textbf{Significance}]
+    \item[\textbf{Personal Assessment}]
+\end{description}
