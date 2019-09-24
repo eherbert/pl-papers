@@ -7,46 +7,66 @@
     \item[\textbf{Context}]
     \item[\textbf{Discussion Points}]
     \item[\textbf{Significance}]
-    \item[\textbf{Personal Assessment}]
 \end{description}
 
 \section {The Education of a Computer \cite{hopper1952education}}
 
 \begin{description}
-    \item[\textbf{Summary}] This paper goes through iterations of "educating" a computer, to where the mathematician using a computer gets the boot, the computer becomes the mathematician, and the programmer becomes an integral part of the computer.
-        A subroutine is a function-like that performs some computation. It has an entry line, exit line, result line, argument lines, and routine lines.
-        Different procedures interact with different lines of the subroutines.
-        The computer is given a bunch of smaller mathematical subroutines that the programmer can use to help construct their programs.
-        It is hypothesised that more "subroutines" could be developed and combined.
-        It is unclear to me what the correlation is between subroutines and modern day functions.
-    \item[\textbf{Context}] I think this work is difficult for modern day programmers to understand/ fathom (myself included).
-        It is difficult to think of what may lie between assembly-style jumps and Haskell, for example, which is the space that this paper explores.
-    \item[\textbf{Discussion Points}] (1) Page 245 discusses turning using programs that contain subroutines as a subroutines itself, which I would consider a profound observation.
-        Yet the "conclusion" focuses just on the arithmetic type mathematical advanecs. Hmm.
-        (2) The proposed UNIVAC is claimed to "not forget" and "not make mistakes."
-        We all know that that is not the case.
+    \item[\textbf{Summary}] This paper goes through iterations of "educating"
+    a computer, to where the mathematician using a computer gets the boot, the
+    computer becomes the mathematician, and the programmer becomes an integral
+    part of the computer. A subroutine is a function-like that performs some
+    computation. It has an entry line, exit line, result line, argument lines,
+    and routine lines. Different procedures interact with different lines of the
+    subroutines. The computer is given a bunch of smaller mathematical subroutines
+    that the programmer can use to help construct their programs. It is
+    hypothesised that more "subroutines" could be developed and combined. It is
+    unclear to me what the correlation is between subroutines and modern day
+    functions.
+    \item[\textbf{Context}] I think this work is difficult for modern day 
+    programmers to understand/ fathom (myself included). It is difficult to
+    think of what may lie between assembly-style jumps and Haskell, for example,
+     which is the space that this paper explores.
+    \item[\textbf{Discussion Points}] (1) Page 245 discusses turning using
+    programs that contain subroutines as a subroutines itself, which I would
+    consider a profound observation. Yet the "conclusion" focuses just on the
+    arithmetic type mathematical advanecs. Hmm.
+    (2) The proposed UNIVAC is claimed to "not forget" and "not make mistakes."
+    We all know that that is not the case.
 \end{description}
 
 \section {The FORTRAN Automatic Coding System \cite{backus1957fortran}}
 
 \begin{description}
     \item[\textbf{Summary}]
-        The paper proposes FORTRAN, a language resulting from a need to reduce computing overhead.
-        The authors report that the goal of FORTRAN is for programmers to be able to use a concise language to specify procedures, rather than writing the granual 704 code directly.
-        FORTRAN achieves this by introducing both a high level language a mechanism of automatic translation to produce optimized 704 code.
-        The language presented uses statements that modern day programmers would recognize - functions, loops, print, etc.
+    The paper proposes FORTRAN, a language resulting from a need to reduce 
+    computing overhead. The authors report that the goal of FORTRAN is for
+    programmers to be able to use a concise language to specify procedures,
+    rather than writing the granual 704 code directly. FORTRAN achieves this by
+    introducing both a high level language a mechanism of automatic translation
+    to produce optimized 704 code. The language presented uses statements that
+    modern day programmers would recognize - functions, loops, print, etc.
 
-        The technical contributions are quite great.
-        The FORTRAN language itself introduces new statements that programmers can use to write pseudo 704 code, with each FORTRAN statement translating to 4 to 20 704 statements.
-        This greatly reduces the time and effort required to write programs and debug.
-        The FORTRAN translator automatically translates FORTRAN statements to 704 statements, and while doing so it makes a number of optimizations that allow for efficient 704 code to be produces.
-        This 704 code may even be more efficient than what a programmer may have wrote directly, and the translator is able to detect patterns and optimizations for different high level ideas.
-        The translator also is able to catch a number of errors and help the programmer debug.
+    The technical contributions are quite great. The FORTRAN language itself
+    introduces new statements that programmers can use to write pseudo 704 code,
+    with each FORTRAN statement translating to 4 to 20 704 statements. This
+    greatly reduces the time and effort required to write programs and debug.
+    The FORTRAN translator automatically translates FORTRAN statements to 704
+    statements, and while doing so it makes a number of optimizations that
+    allow for efficient 704 code to be produces. This 704 code may even be more
+    efficient than what a programmer may have wrote directly, and the translator
+    is able to detect patterns and optimizations for different high level ideas.
+    The translator also is able to catch a number of errors and help the
+    programmer debug.
     \item[\textbf{Context}]
-        This paper's goal was to develop a tool to make programming easier, and it does so by developing a high level representation of frequently used code and introducing a method of translating that high level representation to optimized low level code automatically.
-        Really, that goal hasn't changed much since this time.
-        Obviously languages and toolchains have evolved, but most modern languages employ this automatic translation/ optimization process, and for good reason.
-        It is likely that this paper laid a large portion of the foundation for modern languages.
+    This paper's goal was to develop a tool to make programming easier, and it
+    does so by developing a high level representation of frequently used code
+    and introducing a method of translating that high level representation to
+    optimized low level code automatically. Really, that goal hasn't changed
+    much since this time. Obviously languages and toolchains have evolved, but
+    most modern languages employ this automatic translation/ optimization process,
+    and for good reason. It is likely that this paper laid a large portion of
+    the foundation for modern languages.
     \item[\textbf{Discussion Points}]
         (1) Not a discussion question, but I belive last class it was said that FORTRAN was originally intended for researchers.
         In retrospect it is easy to see why FORTRAN-like languages would be appealing for most programmers, not just researchers, but I am interested in how this transition arose at the time.
@@ -98,38 +118,77 @@
 
 \begin{description}
     \item[\textbf{Summary}]
-        This paper discusses a method of garbage collection that does not require
-        any cooperation from the object code generated from the source program.
-        This means that garbage collection can be isolated - allowing for simplier
-        implementations in conventional compilers and for garbage collection
-        overhead to also be isolated such that programs that do not use garbage
-        collection no longer suffer from this incurred overhead.
-        
-        The garbage collection algorithm presented is the mark-sweep algorithm, which employs
-        two passes over the data to perform collection while gaurenteeing that
-        accessible data is never corrupted. The first pass "marks" all of the data
-        that is accessible by the program and the second pass returns inaccessible
-        objects to a list of free memory.
+    This paper discusses a method of garbage collection that does not require
+    any cooperation from the object code generated from the source program.
+    This means that garbage collection can be isolated - allowing for simplier
+    implementations in conventional compilers and for garbage collection
+    overhead to also be isolated such that programs that do not use garbage
+    collection no longer suffer from this incurred overhead.
+    
+    The garbage collection algorithm presented is the mark-sweep algorithm, which employs
+    two passes over the data to perform collection while gaurenteeing that
+    accessible data is never corrupted. The first pass "marks" all of the data
+    that is accessible by the program and the second pass returns inaccessible
+    objects to a list of free memory.
 
-        The authors discuss several issues that arise when thinkng about garbage
-        collection, but the most notable of their observations is that the
-        problem of whether or not a particular item is accessed in any possible
-        iteration of the program is not decidable. 
+    The authors discuss several issues that arise when thinkng about garbage
+    collection, but the most notable of their observations is that the
+    problem of whether or not a particular item is accessed in any possible
+    iteration of the program is not decidable. 
     \item[\textbf{Context}]
-        Well, garbage collection is still used today, and it will continue to be used
-        for the forseeable future. I don't know enough about modern garbage collection
-        to synthesize how this paper may have influenced modern designs, but the
-        problems discussed in the paper are still problems faced today.
+    Well, garbage collection is still used today, and it will continue to be used
+    for the forseeable future. I don't know enough about modern garbage collection
+    to synthesize how this paper may have influenced modern designs, but the
+    problems discussed in the paper are still problems faced today.
     \item[\textbf{Discussion Points}]
-        Last class we discussed NVM (spelling?), which was something along the lines of "persistent memory". How does garbage collection work in this environment?
+    Last class we discussed NVM (spelling?), which was something along the
+    lines of "persistent memory". How does garbage collection work in this
+    environment?
 \end{description}
 
 \section {Bringing the Web Up to Speed with WebAssembly \cite{haas2017bringing}}
 
 \begin{description}
     \item[\textbf{Summary}]
+    This paper introduces WebAssembly, a portable low-level "language" (bytecode)
+    intended to be used across most modern web browsers. WebAssembly is designed
+    to be language, hardware, and platform independent, and it is abstract over
+    programming models. The authors introduce WebAssembly semantics, memory
+    access, control flow, and type system. They discuss browser implementations
+    and performance results. WebAssembly is slower than native code but faster
+    than asm.js, but it also is smaller in resulting size.
+
+    The control flow and type system are two of the main technical contributions
+    from this paper. WebAssembly uses a structured control flow, where the
+    design bakes in the gaurentee that the code does not contain irreducible
+    loops or "bad" branches. Control flow elements monitor their own local
+    operand stacks, and branching in the code clears an operand stack, such that
+    users don't have to track information about the stack. This design allows
+    the type system to validate the code in a single pass.
+
+    The WebAssembly type system is interesting. It is written in such a way
+    that all of the reduction rules are sound. This means that type-correct
+    WebAssembly code contains so invalid calls, illegeal accesses, and is memory
+    safe. The type system is inherently connected to the control flow design -
+    the control flow design allows the type system to validate the code in one
+    pass and the type system implies that the layout of the operand stack is
+    determined statically. This establishes memory and state encapsulation.
     \item[\textbf{Context}]
+    WebAssembly is recent, this paper is just from 2017. I'm glad we read
+    this, I see lots of people online really excited about the implications of
+    WebAssembly. The control flow design is novel, although the idea of baking
+    into the type system some desired behavior is not novel.
     \item[\textbf{Discussion Points}]
+    1~) Why is JavaScript the only natively supported language on the Web "by
+    historical accident"?
+    2~) What would be the closest relatives to WebAssembly's type system?
+    3~) It seems like the most recent languages to be put into the spotlight
+    (Rust, WebAssembly) have core features baked into the type systems so that
+    their target behaviors can be statically determined. Should we expect this
+    to be an upcoming trend or is this coincidence?
     \item[\textbf{Significance}]
-    \item[\textbf{Personal Assessment}]
+    WebAssembly is very significant, and much needed. It opens up many
+    possibilities for what one might be able to do on the web, and it ensures
+    that those new possibilities are done relatively more safely. I am excited
+    to see more developments in WebAssembly.
 \end{description}
