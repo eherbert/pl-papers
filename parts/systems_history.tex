@@ -1,5 +1,23 @@
 \chapter {Systems History}
 
+\scalebox{1}{
+\begin{tabular}{r |@{\foo} l}
+
+1952 & The Education of a Computer \cite{hopper1952education} \\
+1957 & The FORTRAN Automatic Coding System \cite{backus1957fortran} \\
+1959 & Recursive Functions of Symbolic Expressions and Their Computation by Machine \cite{mccarthy1959recursive} \\
+1964 & Architecture of the IBM System/ 360 \cite{amdahl1964architecture} \\
+1965 & Cramming More Components onto Integrated Circuits \cite{moore1965cramming} \\
+1967 & Validity of the Single Processor Approach to Achieving Large Scale Computing Capabilities \cite{amdahl1967validity} \\
+1988 & Garbage Collection in an Uncooperative Environment \cite{boehm1988garbage} \\
+2008 & Amdahl’s Law in the Multicore Era \cite{hill2008amdahl} \\
+2017 & Bringing the Web Up to Speed with WebAssembly \cite{haas2017bringing} \\
+
+\end{tabular}
+}
+
+\newpage
+
 \section {Template to Copy}
 
 \begin{description}
@@ -18,11 +36,11 @@
     part of the computer. A subroutine is a function-like that performs some
     computation. It has an entry line, exit line, result line, argument lines,
     and routine lines. Different procedures interact with different lines of the
-    subroutines. The computer is given a bunch of smaller mathematical subroutines
-    that the programmer can use to help construct their programs. It is
-    hypothesised that more "subroutines" could be developed and combined. It is
-    unclear to me what the correlation is between subroutines and modern day
-    functions.
+    subroutines. The computer is given a bunch of smaller mathematical
+    subroutines that the programmer can use to help construct their programs.
+    It is hypothesised that more "subroutines" could be developed and combined.
+    It is unclear to me what the correlation is between subroutines and modern
+    day functions.
     \item[\textbf{Context}] I think this work is difficult for modern day 
     programmers to understand/ fathom (myself included). It is difficult to
     think of what may lie between assembly-style jumps and Haskell, for example,
@@ -64,57 +82,80 @@
     and introducing a method of translating that high level representation to
     optimized low level code automatically. Really, that goal hasn't changed
     much since this time. Obviously languages and toolchains have evolved, but
-    most modern languages employ this automatic translation/ optimization process,
-    and for good reason. It is likely that this paper laid a large portion of
-    the foundation for modern languages.
+    most modern languages employ this automatic translation/ optimization
+    process, and for good reason. It is likely that this paper laid a large
+    portion of the foundation for modern languages.
     \item[\textbf{Discussion Points}]
-        (1) Not a discussion question, but I belive last class it was said that FORTRAN was originally intended for researchers.
-        In retrospect it is easy to see why FORTRAN-like languages would be appealing for most programmers, not just researchers, but I am interested in how this transition arose at the time.
-        (2) Hmm, I actually keep getting kind of confused by the use of "subroutine" in each of these papers, how is a subroutine different than a function?
-        I read the other paper for this week first, and I was mentally translating "subroutine" to "function", but this paper makes a distinction.
-        Can we clarify the difference?
+    (1) Not a discussion question, but I belive last class it was said that
+    FORTRAN was originally intended for researchers. In retrospect it is easy to
+    see why FORTRAN-like languages would be appealing for most programmers, not
+    just researchers, but I am interested in how this transition arose at the
+    time. (2) Hmm, I actually keep getting kind of confused by the use of
+    "subroutine" in each of these papers, how is a subroutine different than a
+    function? I read the other paper for this week first, and I was mentally
+    translating "subroutine" to "function", but this paper makes a distinction.
+    Can we clarify the difference?
     \item[\textbf{Significance}]
-        This paper was definitely significant, as it likely paved the way for most modern languages.
-        Not only does it introduce two major components, the lanaguage representation and the compiler, but it also presents a very compelling case for why each of these is useful.
-        This paper likely introduced a lot of motivation for creating tools that could help programmers be more efficient and more accurate.
+    This paper was definitely significant, as it likely paved the way for most
+    modern languages. Not only does it introduce two major components, the
+    lanaguage representation and the compiler, but it also presents a very
+    compelling case for why each of these is useful. This paper likely
+    introduced a lot of motivation for creating tools that could help
+    programmers be more efficient and more accurate.
 \end{description}
 
-\section {Recursive Functions of Symbolic Expressions and Their Computation by Machine \cite{mccarthy1959recursive}}
+\section {Recursive Functions of Symbolic Expressions and Their Computation by
+Machine \cite{mccarthy1959recursive}}
 
 \begin{description}
     \item[\textbf{Summary}]
-        This paper defines a formalism for defining potentialy recursive functions and proposes S-expressions, S-functions, and S-function apply, which together are a system of theoretical program representation that is independent from its machine implementation.
-        The paper then discusses the representation of S-expressions as lists in IBM 704 memory.
-        This work addressed a need to represent LISP symbolically, and it offered additional tools to be used in mathematical logic and theorem proving.
+    This paper defines a formalism for defining potentialy recursive functions
+    and proposes S-expressions, S-functions, and S-function apply, which
+    together are a system of theoretical program representation that is
+    independent from its machine implementation. The paper then discusses the
+    representation of S-expressions as lists in IBM 704 memory. This work
+    addressed a need to represent LISP symbolically, and it offered additional
+    tools to be used in mathematical logic and theorem proving.
 
-        The key ideas include: S-expressions, symbolic expressions composed of ".", "(", ")", and an infinite set of atomic symbols.
-        Operations upon S-expressions.
-        M-expressions, or functions of S-expressions.
-        S-functions, which are described by M-expressions, and the S-function apply.
-        The implementation of S-expressions in 704 memory as lists, where the list structure is specifically mechanized to implement an early iteration of garbage collection.
+    The key ideas include: S-expressions, symbolic expressions composed of ".",
+    "(", ")", and an infinite set of atomic symbols. Operations upon
+    S-expressions. M-expressions, or functions of S-expressions. S-functions,
+    which are described by M-expressions, and the S-function apply. The
+    implementation of S-expressions in 704 memory as lists, where the list
+    structure is specifically mechanized to implement an early iteration of
+    garbage collection.
     \item[\textbf{Context}]
-        This paper discusses LISP for the IBM 704.
-        Technologies have changed dramatically, and we no longer use the IBM 704.
-        LISP is still used, and I'm sure its use cases have expanded past those listed in Section 4.
-        S-expressions are still frequently discussed, although I think because of their simplicity they are most discussed in a pedagogical context.
-        I ran into them when I was googling about Rust macros.
+    This paper discusses LISP for the IBM 704. Technologies have changed
+    dramatically, and we no longer use the IBM 704. LISP is still used, and I'm
+    sure its use cases have expanded past those listed in Section 4.
+    S-expressions are still frequently discussed, although I think because of
+    their simplicity they are most discussed in a pedagogical context. I ran
+    into them when I was googling about Rust macros.
     \item[\textbf{Discussion Points}]
-        (1) The description of the formalism and the methods reminded me of "An Introduction to the Theory of Lists" by Richard S. Bird, in the sense of, they both describe similar operations, one upon S-expressions and the other upon lists.
-        Any relationship there, or no?
-        This potential correlation seems most relavent to the section that discusses representing S-expressions as lists.
-        (2) It seems like the authors of this paper and the FORTRAN paper both naturally extended functions to include higher order functions.
-        Maybe this is just me not understanding things, but I would have expected higher order functions to be some crazy difficult problem, but I guess that is not the case.
-        (3) Section 4 lists that LISP was used to write the compiler to compile LISP programs.
-        I believe this is called "bootstrapping"?
-        Is this the first instance of this? / I forget what the FORTRAN compiler is written in.
+    (1) The description of the formalism and the methods reminded me of "An
+    Introduction to the Theory of Lists" by Richard S. Bird, in the sense of,
+    they both describe similar operations, one upon S-expressions and the other
+    upon lists. Any relationship there, or no? This potential correlation seems
+    most relavent to the section that discusses representing S-expressions as
+    lists. (2) It seems like the authors of this paper and the FORTRAN paper
+    both naturally extended functions to include higher order functions. Maybe
+    this is just me not understanding things, but I would have expected higher
+    order functions to be some crazy difficult problem, but I guess that is not
+    the case. (3) Section 4 lists that LISP was used to write the compiler to
+    compile LISP programs. I believe this is called "bootstrapping"? Is this the
+    first instance of this? / I forget what the FORTRAN compiler is written in.
     \item[\textbf{Significance}]
-        This paper primarily proposes a theoretical program representation and secondarily presents the machine implementation.
-        This is in contrast to the FORTRAN paper, which integrated the "theoretical" language design into the physical implementation, and likely had significant impact on mathematical foundations of computer science.
-        This paper also likely laid foundations for garbage collection.
+    This paper primarily proposes a theoretical program representation and
+    secondarily presents the machine implementation. This is in contrast to the
+    FORTRAN paper, which integrated the "theoretical" language design into the
+    physical implementation, and likely had significant impact on mathematical
+    foundations of computer science. This paper also likely laid foundations for
+    garbage collection.
     \item[\textbf{Personal Assessment}]
 \end{description}
 
-\section {Garbage Collection in an Uncooperative Environment \cite{boehm1988garbage}}
+\section {Garbage Collection in an Uncooperative Environment
+\cite{boehm1988garbage}}
 
 \begin{description}
     \item[\textbf{Summary}]
@@ -125,21 +166,21 @@
     overhead to also be isolated such that programs that do not use garbage
     collection no longer suffer from this incurred overhead.
     
-    The garbage collection algorithm presented is the mark-sweep algorithm, which employs
-    two passes over the data to perform collection while gaurenteeing that
-    accessible data is never corrupted. The first pass "marks" all of the data
-    that is accessible by the program and the second pass returns inaccessible
-    objects to a list of free memory.
+    The garbage collection algorithm presented is the mark-sweep algorithm,
+    which employs two passes over the data to perform collection while
+    gaurenteeing that accessible data is never corrupted. The first pass "marks"
+    all of the data that is accessible by the program and the second pass
+    returns inaccessible objects to a list of free memory.
 
     The authors discuss several issues that arise when thinkng about garbage
     collection, but the most notable of their observations is that the
     problem of whether or not a particular item is accessed in any possible
     iteration of the program is not decidable. 
     \item[\textbf{Context}]
-    Well, garbage collection is still used today, and it will continue to be used
-    for the forseeable future. I don't know enough about modern garbage collection
-    to synthesize how this paper may have influenced modern designs, but the
-    problems discussed in the paper are still problems faced today.
+    Well, garbage collection is still used today, and it will continue to be
+    used for the forseeable future. I don't know enough about modern garbage
+    collection to synthesize how this paper may have influenced modern designs,
+    but the problems discussed in the paper are still problems faced today.
     \item[\textbf{Discussion Points}]
     Last class we discussed NVM (spelling?), which was something along the
     lines of "persistent memory". How does garbage collection work in this
@@ -150,13 +191,14 @@
 
 \begin{description}
     \item[\textbf{Summary}]
-    This paper introduces WebAssembly, a portable low-level "language" (bytecode)
-    intended to be used across most modern web browsers. WebAssembly is designed
-    to be language, hardware, and platform independent, and it is abstract over
-    programming models. The authors introduce WebAssembly semantics, memory
-    access, control flow, and type system. They discuss browser implementations
-    and performance results. WebAssembly is slower than native code but faster
-    than asm.js, but it also is smaller in resulting size.
+    This paper introduces WebAssembly, a portable low-level "language"
+    (bytecode) intended to be used across most modern web browsers. WebAssembly
+    is designed to be language, hardware, and platform independent, and it is
+    abstract over programming models. The authors introduce WebAssembly
+    semantics, memory access, control flow, and type system. They discuss
+    browser implementations and performance results. WebAssembly is slower than
+    native code but faster than asm.js, but it also is smaller in resulting
+    size.
 
     The control flow and type system are two of the main technical contributions
     from this paper. WebAssembly uses a structured control flow, where the
@@ -225,4 +267,64 @@
     \item[\textbf{Significance}]
     This paper is very significant, it introcued I/O and processor design and
     likely changed the computing school of thought at the time.
+\end{description}
+
+\section {Cramming More Components onto Integrated Circuits
+\cite{moore1965cramming}}
+
+\begin{description}
+    \item[\textbf{Summary}]
+    This paper introduces Moore's Law, a theory stating the number of components
+    per integrated curcuit should double every year. This is a very well known
+    theory, so it is interesting to read the origin.
+
+    The paper also offers detailed motivation for why designers, engineers, or
+    consumers might want Moore's Law to be in effect - it makes everyone's lives
+    easier. Moore dispells some false ideas about electricty needs, and offers
+    possible design concepts.
+    \item[\textbf{Context}]
+    This paper has remained quite relavent for some time. It outlived the
+    predictions that Moore himself makes in the paper.
+    \item[\textbf{Discussion Points}]
+    1~) I hear a lot of talk about how Moore's Law is outdated and is becoming
+    irrelevant to modern design concerns. But a simple Google search suggests
+    that Moore's Law is still observable. What's up with that?
+    2~) The last section discusses "Linear circuitry". What is that?
+    3~) It is difficult to seperate correlation versus causation. Could it have
+    been the case that Moore's Law served as a subconcious guide or influence to
+    hardware engineers? As in, perhaps attention would have been focused
+    elsewhere, had engineers not already had the expectation that a 2x
+    improvement was possible.
+    \item[\textbf{Significance}]
+\end{description}
+
+\section {Validity of the Single Processor Approach to Achieving Large Scale
+Computing Capabilities \cite{amdahl1967validity}}
+
+\begin{description}
+    \item[\textbf{Summary}]
+    This paper revisits the original publication that introduced Amdahl's Law,
+    a method of calculating prospective execution speed ups given certain
+    hardware improvements. The paper walks through the rational behind reaching
+    this conclusion.
+
+    This paper was short, and quite honestly I had a hard time following it, so
+    I'm struggling with a review. I did enjoy how sassy the editors note is
+    about this very thing: "Interestingly, it has no equations and only a single
+    figure."
+    \item[\textbf{Discussion Points}]
+    1) What is Amdahl's Law in layman's terms?
+    \item[\textbf{Significance}]
+    I can infer that Amdahl's Law is likely significant, based on the fact that
+    there was a reprint issued. I do not know what the modern perspective is on
+    it though.
+\end{description}
+
+\section {Amdahl’s Law in the Multicore Era \cite{hill2008amdahl}}
+
+\begin{description}
+    \item[\textbf{Summary}]
+    \item[\textbf{Context}]
+    \item[\textbf{Discussion Points}]
+    \item[\textbf{Significance}]
 \end{description}

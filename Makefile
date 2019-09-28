@@ -28,6 +28,9 @@ clean:
 	rm -rf *.idv
 	rm -rf *.lg
 	rm -rf *.tmp
+	rm -rf *.fdb
+	rm -rf *.fls
+	rm -rf *.synctex.gz
 
 read:
 	evince $(FILE).pdf &

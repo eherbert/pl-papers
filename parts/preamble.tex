@@ -1,6 +1,7 @@
 \usepackage{url}
 \usepackage{hyperref}
 \usepackage{xcolor}
+\usepackage[pdftex]{graphicx}
 
 % hyphenation
 \usepackage[english]{babel}
@@ -40,5 +41,9 @@
 \author{\theAuthor}
 \title{\theTitle}
 
+% red colored text
 \colorlet{saved}{.}
 \newcommand{\question}[1]{\color[rgb]{1,0,0} #1 \color{saved}}
+
+% timeline stuff
+\newcommand{\foo}{\hspace{-2.3pt}$\bullet$ \hspace{5pt}}
