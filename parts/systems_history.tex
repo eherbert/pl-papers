@@ -324,7 +324,19 @@ Computing Capabilities \cite{amdahl1967validity}}
 
 \begin{description}
     \item[\textbf{Summary}]
-    \item[\textbf{Context}]
+    This paper applied Amdahl's Law to multicore chips, and to do so the authors
+    present a novel cost model that considers the number and performance of
+    cores. They analyze their cost model and demonstrate that it can be used to
+    apply Amdahl's Law to multicore chips. Using this new model, the authors
+    conclude that denser chips increase the likelihood that cores will lose
+    performance. They connect this to Moore's Law and urge researchers to find
+    ways to improve chip performance with denser chips.
+
+    They also analyze Amdahl's Law against asymmetric multicore chips, and find
+    that asymmetric chips have potential for greater speedups than symmetric
+    chips. They propose that Amdahl's Law may not be particularly adept to
+    modeling these asymmetric chips.
     \item[\textbf{Discussion Points}]
-    \item[\textbf{Significance}]
+    1) How does this relate to the "stacked" chip design that was mentioned in
+    class earlier this semester?
 \end{description}
