@@ -14,6 +14,7 @@
 1980 & The Case for the Reduced Instruction Set Computer \cite{patterson1980case} \\
      & Comments on the Case for RISC \cite{clark1980comments} \\
 1988 & Garbage Collection in an Uncooperative Environment \cite{boehm1988garbage} \\
+1989 & Available Instruction-Level Parallelism for Superscalar and Superpipelined Machines \cite{jouppi1989available} \\
 2008 & Amdahl’s Law in the Multicore Era \cite{hill2008amdahl} \\
 2017 & Bringing the Web Up to Speed with WebAssembly \cite{haas2017bringing} \\
 
@@ -29,9 +30,7 @@
 \paragraph{\textbf{Discussion Points}}
 \paragraph{\textbf{Significance}}
 
-
 \section {The Education of a Computer \cite{hopper1952education}}
-
 
 \paragraph{\textbf{Summary}}
 This paper goes through iterations of "educating" a computer, to where the
@@ -137,18 +136,22 @@ still frequently discussed, although I think because of their simplicity they
 are most discussed in a pedagogical context. I ran into them when I was googling
 about Rust macros.
 \paragraph{\textbf{Discussion Points}}
-(1) The description of the formalism and the methods reminded me of "An
-Introduction to the Theory of Lists" by Richard S. Bird, in the sense of,
-they both describe similar operations, one upon S-expressions and the other
-upon lists. Any relationship there, or no? This potential correlation seems
-most relavent to the section that discusses representing S-expressions as
-lists. (2) It seems like the authors of this paper and the FORTRAN paper
-both naturally extended functions to include higher order functions. Maybe
-this is just me not understanding things, but I would have expected higher
-order functions to be some crazy difficult problem, but I guess that is not
-the case. (3) Section 4 lists that LISP was used to write the compiler to
-compile LISP programs. I believe this is called "bootstrapping"? Is this the
-first instance of this? / I forget what the FORTRAN compiler is written in.
+\begin{enumerate}
+    \item The description of the formalism and the methods reminded me of "An
+    Introduction to the Theory of Lists" by Richard S. Bird, in the sense of,
+    they both describe similar operations, one upon S-expressions and the other
+    upon lists. Any relationship there, or no? This potential correlation seems
+    most relavent to the section that discusses representing S-expressions as
+    lists.
+    \item It seems like the authors of this paper and the FORTRAN paper both
+    naturally extended functions to include higher order functions. Maybe this
+    is just me not understanding things, but I would have expected higher order
+    functions to be some crazy difficult problem, but I guess that is not the
+    case.
+    \item Section 4 lists that LISP was used to write the compiler to compile
+    LISP programs. I believe this is called "bootstrapping"? Is this the first
+    instance of this? / I forget what the FORTRAN compiler is written in.
+\end{enumerate}
 \paragraph{\textbf{Significance}}
 This paper primarily proposes a theoretical program representation and
 secondarily presents the machine implementation. This is in contrast to the
@@ -417,3 +420,28 @@ This came out the same year as the original paper that it is critiquing.
 It's unclear to me what the significance was of the original paper, but I
 imagine the situation must be significant enough to warrant a published
 critique.
+
+\section {Available Instruction-Level Parallelism for Superscalar and
+Superpipelined Machines \cite{jouppi1989available}}
+
+\paragraph{\textbf{Summary}}
+This paper analyzes the differences between machines with different parallelism
+mechanisms. It proposes 5 different types of machines: baseline, underpipelined,
+superscalar, superpipelined, VLIW, and superscalar + superpipelined. The two in
+focus are superscalar and superpipelined, where superscalar machines executes n
+instructions in a cycle and superpipelined machines execute 1 instruction every
+1/n cycle. It is shown that although the two machines execute the same number of
+instructions in the same number of cycles, the superpipelined machine has a
+larger startup latency so the superscalar machine is actually 10\% better.
+
+However, these are theoretical machines, and actual instructions are much more
+complicated and contain multi-cycle instructions.
+
+\paragraph{\textbf{Discussion Points}}
+\begin{enumerate}
+    \item If a language were to have something like, memory layout/ management/
+    usage baked into the type system, wouldn't the language be able to maximize
+    automatic parallelisation? Does this exist?
+    \item I did not understand their explanation of VLIW machines, can we go
+    over this?
+\end{enumerate}
