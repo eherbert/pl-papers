@@ -1,5 +1,7 @@
 \chapter {Systems History}
 
+\section{Timeline of Papers}
+
 \scalebox{1}{
 \begin{tabular}{r |@{\foo} l}
 
@@ -9,6 +11,8 @@
 1964 & Architecture of the IBM System/ 360 \cite{amdahl1964architecture} \\
 1965 & Cramming More Components onto Integrated Circuits \cite{moore1965cramming} \\
 1967 & Validity of the Single Processor Approach to Achieving Large Scale Computing Capabilities \cite{amdahl1967validity} \\
+1980 & The Case for the Reduced Instruction Set Computer \cite{patterson1980case} \\
+     & Comments on the Case for RISC \cite{clark1980comments} \\
 1988 & Garbage Collection in an Uncooperative Environment \cite{boehm1988garbage} \\
 2008 & Amdahl’s Law in the Multicore Era \cite{hill2008amdahl} \\
 2017 & Bringing the Web Up to Speed with WebAssembly \cite{haas2017bringing} \\
@@ -20,323 +24,396 @@
 
 \section {Template to Copy}
 
-\begin{description}
-    \item[\textbf{Summary}]
-    \item[\textbf{Context}]
-    \item[\textbf{Discussion Points}]
-    \item[\textbf{Significance}]
-\end{description}
+\paragraph{\textbf{Summary}}
+\paragraph{\textbf{Context}}
+\paragraph{\textbf{Discussion Points}}
+\paragraph{\textbf{Significance}}
+
 
 \section {The Education of a Computer \cite{hopper1952education}}
 
-\begin{description}
-    \item[\textbf{Summary}] This paper goes through iterations of "educating"
-    a computer, to where the mathematician using a computer gets the boot, the
-    computer becomes the mathematician, and the programmer becomes an integral
-    part of the computer. A subroutine is a function-like that performs some
-    computation. It has an entry line, exit line, result line, argument lines,
-    and routine lines. Different procedures interact with different lines of the
-    subroutines. The computer is given a bunch of smaller mathematical
-    subroutines that the programmer can use to help construct their programs.
-    It is hypothesised that more "subroutines" could be developed and combined.
-    It is unclear to me what the correlation is between subroutines and modern
-    day functions.
-    \item[\textbf{Context}] I think this work is difficult for modern day 
-    programmers to understand/ fathom (myself included). It is difficult to
-    think of what may lie between assembly-style jumps and Haskell, for example,
-     which is the space that this paper explores.
-    \item[\textbf{Discussion Points}] (1) Page 245 discusses turning using
-    programs that contain subroutines as a subroutines itself, which I would
-    consider a profound observation. Yet the "conclusion" focuses just on the
-    arithmetic type mathematical advanecs. Hmm.
-    (2) The proposed UNIVAC is claimed to "not forget" and "not make mistakes."
-    We all know that that is not the case.
-\end{description}
+
+\paragraph{\textbf{Summary}}
+This paper goes through iterations of "educating" a computer, to where the
+mathematician using a computer gets the boot, the computer becomes the
+mathematician, and the programmer becomes an integral part of the computer. A
+subroutine is a function-like that performs some computation. It has an entry
+line, exit line, result line, argument lines, and routine lines. Different
+procedures interact with different lines of the subroutines. The computer is
+given a bunch of smaller mathematical subroutines that the programmer can use to
+help construct their programs. It is hypothesised that more "subroutines" could
+be developed and combined. It is unclear to me what the correlation is between
+subroutines and modern day functions.
+\paragraph{\textbf{Context}}
+I think this work is difficult for modern day programmers to understand/ fathom
+(myself included). It is difficult to think of what may lie between
+assembly-style jumps and Haskell, for example, which is the space that this
+paper explores.
+\paragraph{\textbf{Discussion Points}}
+\begin{enumerate}
+    \item Page 245 discusses turning using programs that contain subroutines as
+    a subroutines itself, which I would consider a profound observation. Yet the
+    "conclusion" focuses just on the arithmetic type mathematical advanecs. Hmm.
+    \item The proposed UNIVAC is claimed to "not forget" and "not make
+    mistakes." We all know that that is not the case.
+\end{enumerate}
+
 
 \section {The FORTRAN Automatic Coding System \cite{backus1957fortran}}
 
-\begin{description}
-    \item[\textbf{Summary}]
-    The paper proposes FORTRAN, a language resulting from a need to reduce 
-    computing overhead. The authors report that the goal of FORTRAN is for
-    programmers to be able to use a concise language to specify procedures,
-    rather than writing the granual 704 code directly. FORTRAN achieves this by
-    introducing both a high level language a mechanism of automatic translation
-    to produce optimized 704 code. The language presented uses statements that
-    modern day programmers would recognize - functions, loops, print, etc.
 
-    The technical contributions are quite great. The FORTRAN language itself
-    introduces new statements that programmers can use to write pseudo 704 code,
-    with each FORTRAN statement translating to 4 to 20 704 statements. This
-    greatly reduces the time and effort required to write programs and debug.
-    The FORTRAN translator automatically translates FORTRAN statements to 704
-    statements, and while doing so it makes a number of optimizations that
-    allow for efficient 704 code to be produces. This 704 code may even be more
-    efficient than what a programmer may have wrote directly, and the translator
-    is able to detect patterns and optimizations for different high level ideas.
-    The translator also is able to catch a number of errors and help the
-    programmer debug.
-    \item[\textbf{Context}]
-    This paper's goal was to develop a tool to make programming easier, and it
-    does so by developing a high level representation of frequently used code
-    and introducing a method of translating that high level representation to
-    optimized low level code automatically. Really, that goal hasn't changed
-    much since this time. Obviously languages and toolchains have evolved, but
-    most modern languages employ this automatic translation/ optimization
-    process, and for good reason. It is likely that this paper laid a large
-    portion of the foundation for modern languages.
-    \item[\textbf{Discussion Points}]
-    (1) Not a discussion question, but I belive last class it was said that
+\paragraph{\textbf{Summary}}
+The paper proposes FORTRAN, a language resulting from a need to reduce computing
+overhead. The authors report that the goal of FORTRAN is for programmers to be
+able to use a concise language to specify procedures, rather than writing the
+granual 704 code directly. FORTRAN achieves this by introducing both a high
+level language a mechanism of automatic translation to produce optimized 704
+code. The language presented uses statements that modern day programmers would
+recognize - functions, loops, print, etc.
+
+The technical contributions are quite great. The FORTRAN language itself
+introduces new statements that programmers can use to write pseudo 704 code,
+with each FORTRAN statement translating to 4 to 20 704 statements. This greatly
+reduces the time and effort required to write programs and debug. The FORTRAN
+translator automatically translates FORTRAN statements to 704 statements, and
+while doing so it makes a number of optimizations that allow for efficient 704
+code to be produces. This 704 code may even be more efficient than what a
+programmer may have wrote directly, and the translator is able to detect
+patterns and optimizations for different high level ideas. The translator also
+is able to catch a number of errors and help the programmer debug.
+\paragraph{\textbf{Context}}
+This paper's goal was to develop a tool to make programming easier, and it does
+so by developing a high level representation of frequently used code and
+introducing a method of translating that high level representation to optimized
+low level code automatically. Really, that goal hasn't changed much since this
+time. Obviously languages and toolchains have evolved, but most modern languages
+employ this automatic translation/ optimization process, and for good reason. It
+is likely that this paper laid a large portion of the foundation for modern
+languages.
+\paragraph{\textbf{Discussion Points}}
+\begin{enumerate}
+    \item Not a discussion question, but I belive last class it was said that
     FORTRAN was originally intended for researchers. In retrospect it is easy to
     see why FORTRAN-like languages would be appealing for most programmers, not
     just researchers, but I am interested in how this transition arose at the
-    time. (2) Hmm, I actually keep getting kind of confused by the use of
+    time.
+    \item Hmm, I actually keep getting kind of confused by the use of
     "subroutine" in each of these papers, how is a subroutine different than a
     function? I read the other paper for this week first, and I was mentally
     translating "subroutine" to "function", but this paper makes a distinction.
     Can we clarify the difference?
-    \item[\textbf{Significance}]
-    This paper was definitely significant, as it likely paved the way for most
-    modern languages. Not only does it introduce two major components, the
-    lanaguage representation and the compiler, but it also presents a very
-    compelling case for why each of these is useful. This paper likely
-    introduced a lot of motivation for creating tools that could help
-    programmers be more efficient and more accurate.
-\end{description}
+\end{enumerate}
+\paragraph{\textbf{Significance}}
+This paper was definitely significant, as it likely paved the way for most
+modern languages. Not only does it introduce two major components, the lanaguage
+representation and the compiler, but it also presents a very compelling case for
+why each of these is useful. This paper likely introduced a lot of motivation
+for creating tools that could help programmers be more efficient and more
+accurate.
 
 \section {Recursive Functions of Symbolic Expressions and Their Computation by
 Machine \cite{mccarthy1959recursive}}
 
-\begin{description}
-    \item[\textbf{Summary}]
-    This paper defines a formalism for defining potentialy recursive functions
-    and proposes S-expressions, S-functions, and S-function apply, which
-    together are a system of theoretical program representation that is
-    independent from its machine implementation. The paper then discusses the
-    representation of S-expressions as lists in IBM 704 memory. This work
-    addressed a need to represent LISP symbolically, and it offered additional
-    tools to be used in mathematical logic and theorem proving.
+\paragraph{\textbf{Summary}}
+This paper defines a formalism for defining potentialy recursive functions and
+proposes S-expressions, S-functions, and S-function apply, which together are a
+system of theoretical program representation that is independent from its
+machine implementation. The paper then discusses the representation of
+S-expressions as lists in IBM 704 memory. This work addressed a need to
+represent LISP symbolically, and it offered additional tools to be used in
+mathematical logic and theorem proving.
 
-    The key ideas include: S-expressions, symbolic expressions composed of ".",
-    "(", ")", and an infinite set of atomic symbols. Operations upon
-    S-expressions. M-expressions, or functions of S-expressions. S-functions,
-    which are described by M-expressions, and the S-function apply. The
-    implementation of S-expressions in 704 memory as lists, where the list
-    structure is specifically mechanized to implement an early iteration of
-    garbage collection.
-    \item[\textbf{Context}]
-    This paper discusses LISP for the IBM 704. Technologies have changed
-    dramatically, and we no longer use the IBM 704. LISP is still used, and I'm
-    sure its use cases have expanded past those listed in Section 4.
-    S-expressions are still frequently discussed, although I think because of
-    their simplicity they are most discussed in a pedagogical context. I ran
-    into them when I was googling about Rust macros.
-    \item[\textbf{Discussion Points}]
-    (1) The description of the formalism and the methods reminded me of "An
-    Introduction to the Theory of Lists" by Richard S. Bird, in the sense of,
-    they both describe similar operations, one upon S-expressions and the other
-    upon lists. Any relationship there, or no? This potential correlation seems
-    most relavent to the section that discusses representing S-expressions as
-    lists. (2) It seems like the authors of this paper and the FORTRAN paper
-    both naturally extended functions to include higher order functions. Maybe
-    this is just me not understanding things, but I would have expected higher
-    order functions to be some crazy difficult problem, but I guess that is not
-    the case. (3) Section 4 lists that LISP was used to write the compiler to
-    compile LISP programs. I believe this is called "bootstrapping"? Is this the
-    first instance of this? / I forget what the FORTRAN compiler is written in.
-    \item[\textbf{Significance}]
-    This paper primarily proposes a theoretical program representation and
-    secondarily presents the machine implementation. This is in contrast to the
-    FORTRAN paper, which integrated the "theoretical" language design into the
-    physical implementation, and likely had significant impact on mathematical
-    foundations of computer science. This paper also likely laid foundations for
-    garbage collection.
-    \item[\textbf{Personal Assessment}]
-\end{description}
+The key ideas include: S-expressions, symbolic expressions composed of ".", "(",
+")", and an infinite set of atomic symbols. Operations upon S-expressions.
+M-expressions, or functions of S-expressions. S-functions, which are described
+by M-expressions, and the S-function apply. The implementation of S-expressions
+in 704 memory as lists, where the list structure is specifically mechanized to
+implement an early iteration of garbage collection.
+\paragraph{\textbf{Context}}
+This paper discusses LISP for the IBM 704. Technologies have changed
+dramatically, and we no longer use the IBM 704. LISP is still used, and I'm sure
+its use cases have expanded past those listed in Section 4. S-expressions are
+still frequently discussed, although I think because of their simplicity they
+are most discussed in a pedagogical context. I ran into them when I was googling
+about Rust macros.
+\paragraph{\textbf{Discussion Points}}
+(1) The description of the formalism and the methods reminded me of "An
+Introduction to the Theory of Lists" by Richard S. Bird, in the sense of,
+they both describe similar operations, one upon S-expressions and the other
+upon lists. Any relationship there, or no? This potential correlation seems
+most relavent to the section that discusses representing S-expressions as
+lists. (2) It seems like the authors of this paper and the FORTRAN paper
+both naturally extended functions to include higher order functions. Maybe
+this is just me not understanding things, but I would have expected higher
+order functions to be some crazy difficult problem, but I guess that is not
+the case. (3) Section 4 lists that LISP was used to write the compiler to
+compile LISP programs. I believe this is called "bootstrapping"? Is this the
+first instance of this? / I forget what the FORTRAN compiler is written in.
+\paragraph{\textbf{Significance}}
+This paper primarily proposes a theoretical program representation and
+secondarily presents the machine implementation. This is in contrast to the
+FORTRAN paper, which integrated the "theoretical" language design into the
+physical implementation, and likely had significant impact on mathematical
+foundations of computer science. This paper also likely laid foundations for
+garbage collection.
+
 
 \section {Garbage Collection in an Uncooperative Environment
 \cite{boehm1988garbage}}
 
-\begin{description}
-    \item[\textbf{Summary}]
-    This paper discusses a method of garbage collection that does not require
-    any cooperation from the object code generated from the source program.
-    This means that garbage collection can be isolated - allowing for simplier
-    implementations in conventional compilers and for garbage collection
-    overhead to also be isolated such that programs that do not use garbage
-    collection no longer suffer from this incurred overhead.
-    
-    The garbage collection algorithm presented is the mark-sweep algorithm,
-    which employs two passes over the data to perform collection while
-    gaurenteeing that accessible data is never corrupted. The first pass "marks"
-    all of the data that is accessible by the program and the second pass
-    returns inaccessible objects to a list of free memory.
 
-    The authors discuss several issues that arise when thinkng about garbage
-    collection, but the most notable of their observations is that the
-    problem of whether or not a particular item is accessed in any possible
-    iteration of the program is not decidable. 
-    \item[\textbf{Context}]
-    Well, garbage collection is still used today, and it will continue to be
-    used for the forseeable future. I don't know enough about modern garbage
-    collection to synthesize how this paper may have influenced modern designs,
-    but the problems discussed in the paper are still problems faced today.
-    \item[\textbf{Discussion Points}]
-    Last class we discussed NVM (spelling?), which was something along the
-    lines of "persistent memory". How does garbage collection work in this
-    environment?
-\end{description}
+\paragraph{\textbf{Summary}}
+This paper discusses a method of garbage collection that does not require
+any cooperation from the object code generated from the source program.
+This means that garbage collection can be isolated - allowing for simplier
+implementations in conventional compilers and for garbage collection
+overhead to also be isolated such that programs that do not use garbage
+collection no longer suffer from this incurred overhead.
+
+The garbage collection algorithm presented is the mark-sweep algorithm,
+which employs two passes over the data to perform collection while
+gaurenteeing that accessible data is never corrupted. The first pass "marks"
+all of the data that is accessible by the program and the second pass
+returns inaccessible objects to a list of free memory.
+
+The authors discuss several issues that arise when thinkng about garbage
+collection, but the most notable of their observations is that the
+problem of whether or not a particular item is accessed in any possible
+iteration of the program is not decidable. 
+\paragraph{\textbf{Context}}
+Well, garbage collection is still used today, and it will continue to be
+used for the forseeable future. I don't know enough about modern garbage
+collection to synthesize how this paper may have influenced modern designs,
+but the problems discussed in the paper are still problems faced today.
+\paragraph{\textbf{Discussion Points}}
+Last class we discussed NVM (spelling?), which was something along the
+lines of "persistent memory". How does garbage collection work in this
+environment?
+
 
 \section {Bringing the Web Up to Speed with WebAssembly \cite{haas2017bringing}}
 
-\begin{description}
-    \item[\textbf{Summary}]
-    This paper introduces WebAssembly, a portable low-level "language"
-    (bytecode) intended to be used across most modern web browsers. WebAssembly
-    is designed to be language, hardware, and platform independent, and it is
-    abstract over programming models. The authors introduce WebAssembly
-    semantics, memory access, control flow, and type system. They discuss
-    browser implementations and performance results. WebAssembly is slower than
-    native code but faster than asm.js, but it also is smaller in resulting
-    size.
 
-    The control flow and type system are two of the main technical contributions
-    from this paper. WebAssembly uses a structured control flow, where the
-    design bakes in the gaurentee that the code does not contain irreducible
-    loops or "bad" branches. Control flow elements monitor their own local
-    operand stacks, and branching in the code clears an operand stack, such that
-    users don't have to track information about the stack. This design allows
-    the type system to validate the code in a single pass.
+\paragraph{\textbf{Summary}}
+This paper introduces WebAssembly, a portable low-level "language"
+(bytecode) intended to be used across most modern web browsers. WebAssembly
+is designed to be language, hardware, and platform independent, and it is
+abstract over programming models. The authors introduce WebAssembly
+semantics, memory access, control flow, and type system. They discuss
+browser implementations and performance results. WebAssembly is slower than
+native code but faster than asm.js, but it also is smaller in resulting
+size.
 
-    The WebAssembly type system is interesting. It is written in such a way
-    that all of the reduction rules are sound. This means that type-correct
-    WebAssembly code contains so invalid calls, illegeal accesses, and is memory
-    safe. The type system is inherently connected to the control flow design -
-    the control flow design allows the type system to validate the code in one
-    pass and the type system implies that the layout of the operand stack is
-    determined statically. This establishes memory and state encapsulation.
-    \item[\textbf{Context}]
-    WebAssembly is recent, this paper is just from 2017. I'm glad we read
-    this, I see lots of people online really excited about the implications of
-    WebAssembly. The control flow design is novel, although the idea of baking
-    into the type system some desired behavior is not novel.
-    \item[\textbf{Discussion Points}]
-    1~) Why is JavaScript the only natively supported language on the Web "by
-    historical accident"?
-    2~) What would be the closest relatives to WebAssembly's type system?
-    3~) It seems like the most recent languages to be put into the spotlight
-    (Rust, WebAssembly) have core features baked into the type systems so that
-    their target behaviors can be statically determined. Should we expect this
-    to be an upcoming trend or is this coincidence?
-    \item[\textbf{Significance}]
-    WebAssembly is very significant, and much needed. It opens up many
-    possibilities for what one might be able to do on the web, and it ensures
-    that those new possibilities are done relatively more safely. I am excited
-    to see more developments in WebAssembly.
-\end{description}
+The control flow and type system are two of the main technical contributions
+from this paper. WebAssembly uses a structured control flow, where the
+design bakes in the gaurentee that the code does not contain irreducible
+loops or "bad" branches. Control flow elements monitor their own local
+operand stacks, and branching in the code clears an operand stack, such that
+users don't have to track information about the stack. This design allows
+the type system to validate the code in a single pass.
+
+The WebAssembly type system is interesting. It is written in such a way
+that all of the reduction rules are sound. This means that type-correct
+WebAssembly code contains so invalid calls, illegeal accesses, and is memory
+safe. The type system is inherently connected to the control flow design -
+the control flow design allows the type system to validate the code in one
+pass and the type system implies that the layout of the operand stack is
+determined statically. This establishes memory and state encapsulation.
+\paragraph{\textbf{Context}}
+WebAssembly is recent, this paper is just from 2017. I'm glad we read
+this, I see lots of people online really excited about the implications of
+WebAssembly. The control flow design is novel, although the idea of baking
+into the type system some desired behavior is not novel.
+\paragraph{\textbf{Discussion Points}}
+1~) Why is JavaScript the only natively supported language on the Web "by
+historical accident"?
+2~) What would be the closest relatives to WebAssembly's type system?
+3~) It seems like the most recent languages to be put into the spotlight
+(Rust, WebAssembly) have core features baked into the type systems so that
+their target behaviors can be statically determined. Should we expect this
+to be an upcoming trend or is this coincidence?
+\paragraph{\textbf{Significance}}
+WebAssembly is very significant, and much needed. It opens up many
+possibilities for what one might be able to do on the web, and it ensures
+that those new possibilities are done relatively more safely. I am excited
+to see more developments in WebAssembly.
+
 
 \section {Architecture of the IBM System/ 360 \cite{amdahl1964architecture}}
 
-\begin{description}
-    \item[\textbf{Summary}]
-    Amdahl et al. describes the architectural design of the IBM System/ 360 and
-    the rational behind each design choice. At a high level, the authors discuss
-    the goal of the system design - to provide a general purpose machine that
-    would provide an abstract data representation, agnostic from any particular
-    function or application.
-    \item[\textbf{Context}]
-    This paper was published 4 years after the ALGOL 60 paper, another paper
-    working towards the goal of general purpose computing. In addition to being
-    revolutionary at the time of publication (I imagine), this paper also
-    introduced many of the hardware concepts that we know today - I/O, 32 bit
-    and 64 bit processors, etc.
-    \item[\textbf{Discussion Points}]
-    1~) This paper details that one of the requirements of the new IBM System/
-    360 is that it would have to be such that "each individual model and
-    systems configuration in the line would have to be competitive with systems
-    that are specialzed in function, performance level or both." This is
-    interesting because it is difficult to imagine what the school-of-thought
-    must have been at the time, to where the inherent value of a more generic
-    machine is not recognized. I read this and was suprised that this was a
-    constraint, for this reason.
-    2~) Is it by accident that the IBM System/ 360 "got right" the concept of
-    32~-bit and 64~-bit systems? Or is it mearly an informed design choice, that
-    we have continued to use? Could there have been alternative designs that
-    work as well or better? What would the implications be for software
-    developement, for computing schools of thought?
-    \item[\textbf{Significance}]
-    This paper is very significant, it introcued I/O and processor design and
-    likely changed the computing school of thought at the time.
-\end{description}
+
+\paragraph{\textbf{Summary}}
+Amdahl et al. describes the architectural design of the IBM System/ 360 and
+the rational behind each design choice. At a high level, the authors discuss
+the goal of the system design - to provide a general purpose machine that
+would provide an abstract data representation, agnostic from any particular
+function or application.
+\paragraph{\textbf{Context}}
+This paper was published 4 years after the ALGOL 60 paper, another paper
+working towards the goal of general purpose computing. In addition to being
+revolutionary at the time of publication (I imagine), this paper also
+introduced many of the hardware concepts that we know today - I/O, 32 bit
+and 64 bit processors, etc.
+\paragraph{\textbf{Discussion Points}}
+1~) This paper details that one of the requirements of the new IBM System/
+360 is that it would have to be such that "each individual model and
+systems configuration in the line would have to be competitive with systems
+that are specialzed in function, performance level or both." This is
+interesting because it is difficult to imagine what the school-of-thought
+must have been at the time, to where the inherent value of a more generic
+machine is not recognized. I read this and was suprised that this was a
+constraint, for this reason.
+2~) Is it by accident that the IBM System/ 360 "got right" the concept of
+32~-bit and 64~-bit systems? Or is it mearly an informed design choice, that
+we have continued to use? Could there have been alternative designs that
+work as well or better? What would the implications be for software
+developement, for computing schools of thought?
+\paragraph{\textbf{Significance}}
+This paper is very significant, it introcued I/O and processor design and
+likely changed the computing school of thought at the time.
+
 
 \section {Cramming More Components onto Integrated Circuits
 \cite{moore1965cramming}}
 
-\begin{description}
-    \item[\textbf{Summary}]
-    This paper introduces Moore's Law, a theory stating the number of components
-    per integrated curcuit should double every year. This is a very well known
-    theory, so it is interesting to read the origin.
 
-    The paper also offers detailed motivation for why designers, engineers, or
-    consumers might want Moore's Law to be in effect - it makes everyone's lives
-    easier. Moore dispells some false ideas about electricty needs, and offers
-    possible design concepts.
-    \item[\textbf{Context}]
-    This paper has remained quite relavent for some time. It outlived the
-    predictions that Moore himself makes in the paper.
-    \item[\textbf{Discussion Points}]
-    1~) I hear a lot of talk about how Moore's Law is outdated and is becoming
-    irrelevant to modern design concerns. But a simple Google search suggests
-    that Moore's Law is still observable. What's up with that?
-    2~) The last section discusses "Linear circuitry". What is that?
-    3~) It is difficult to seperate correlation versus causation. Could it have
-    been the case that Moore's Law served as a subconcious guide or influence to
-    hardware engineers? As in, perhaps attention would have been focused
-    elsewhere, had engineers not already had the expectation that a 2x
-    improvement was possible.
-    \item[\textbf{Significance}]
-\end{description}
+\paragraph{\textbf{Summary}}
+This paper introduces Moore's Law, a theory stating the number of components
+per integrated curcuit should double every year. This is a very well known
+theory, so it is interesting to read the origin.
+
+The paper also offers detailed motivation for why designers, engineers, or
+consumers might want Moore's Law to be in effect - it makes everyone's lives
+easier. Moore dispells some false ideas about electricty needs, and offers
+possible design concepts.
+\paragraph{\textbf{Context}}
+This paper has remained quite relavent for some time. It outlived the
+predictions that Moore himself makes in the paper.
+\paragraph{\textbf{Discussion Points}}
+1~) I hear a lot of talk about how Moore's Law is outdated and is becoming
+irrelevant to modern design concerns. But a simple Google search suggests
+that Moore's Law is still observable. What's up with that?
+2~) The last section discusses "Linear circuitry". What is that?
+3~) It is difficult to seperate correlation versus causation. Could it have
+been the case that Moore's Law served as a subconcious guide or influence to
+hardware engineers? As in, perhaps attention would have been focused
+elsewhere, had engineers not already had the expectation that a 2x
+improvement was possible.
+\paragraph{\textbf{Significance}}
+
 
 \section {Validity of the Single Processor Approach to Achieving Large Scale
 Computing Capabilities \cite{amdahl1967validity}}
 
-\begin{description}
-    \item[\textbf{Summary}]
-    This paper revisits the original publication that introduced Amdahl's Law,
-    a method of calculating prospective execution speed ups given certain
-    hardware improvements. The paper walks through the rational behind reaching
-    this conclusion.
 
-    This paper was short, and quite honestly I had a hard time following it, so
-    I'm struggling with a review. I did enjoy how sassy the editors note is
-    about this very thing: "Interestingly, it has no equations and only a single
-    figure."
-    \item[\textbf{Discussion Points}]
-    1) What is Amdahl's Law in layman's terms?
-    \item[\textbf{Significance}]
-    I can infer that Amdahl's Law is likely significant, based on the fact that
-    there was a reprint issued. I do not know what the modern perspective is on
-    it though.
-\end{description}
+\paragraph{\textbf{Summary}}
+This paper revisits the original publication that introduced Amdahl's Law,
+a method of calculating prospective execution speed ups given certain
+hardware improvements. The paper walks through the rational behind reaching
+this conclusion.
+
+This paper was short, and quite honestly I had a hard time following it, so
+I'm struggling with a review. I did enjoy how sassy the editors note is
+about this very thing: "Interestingly, it has no equations and only a single
+figure."
+\paragraph{\textbf{Discussion Points}}
+1) What is Amdahl's Law in layman's terms?
+\paragraph{\textbf{Significance}}
+I can infer that Amdahl's Law is likely significant, based on the fact that
+there was a reprint issued. I do not know what the modern perspective is on
+it though.
+
 
 \section {Amdahl’s Law in the Multicore Era \cite{hill2008amdahl}}
 
-\begin{description}
-    \item[\textbf{Summary}]
-    This paper applied Amdahl's Law to multicore chips, and to do so the authors
-    present a novel cost model that considers the number and performance of
-    cores. They analyze their cost model and demonstrate that it can be used to
-    apply Amdahl's Law to multicore chips. Using this new model, the authors
-    conclude that denser chips increase the likelihood that cores will lose
-    performance. They connect this to Moore's Law and urge researchers to find
-    ways to improve chip performance with denser chips.
 
-    They also analyze Amdahl's Law against asymmetric multicore chips, and find
-    that asymmetric chips have potential for greater speedups than symmetric
-    chips. They propose that Amdahl's Law may not be particularly adept to
-    modeling these asymmetric chips.
-    \item[\textbf{Discussion Points}]
-    1) How does this relate to the "stacked" chip design that was mentioned in
-    class earlier this semester?
-\end{description}
+\paragraph{\textbf{Summary}}
+This paper applied Amdahl's Law to multicore chips, and to do so the authors
+present a novel cost model that considers the number and performance of
+cores. They analyze their cost model and demonstrate that it can be used to
+apply Amdahl's Law to multicore chips. Using this new model, the authors
+conclude that denser chips increase the likelihood that cores will lose
+performance. They connect this to Moore's Law and urge researchers to find
+ways to improve chip performance with denser chips.
+
+They also analyze Amdahl's Law against asymmetric multicore chips, and find
+that asymmetric chips have potential for greater speedups than symmetric
+chips. They propose that Amdahl's Law may not be particularly adept to
+modeling these asymmetric chips.
+\paragraph{\textbf{Discussion Points}}
+1) How does this relate to the "stacked" chip design that was mentioned in
+class earlier this semester?
+
+
+\section {The Case for the Reduced Instruction Set Computer
+\cite{patterson1980case}}
+
+\paragraph{\textbf{Summary}}
+This paper offers motivation for why exploring reduced instruction set computers
+(RISC) might be worthwhile or profitable. Patterson and Ditzel claim that the
+trend towards higher level languages is supported by several nuanced factors.
+They propose that it has been easier to gain a 10\% computation advance by
+adding 10\% more hardware, rather than making code 10\% more dense, and this
+plays into the fact that it is actually more adventageous for companies to
+market `more advanced instruction sets', basically meaning that there is no
+pressure on designers to actively reduce instruction sets.
+
+The authors provided several pieces of evidence to offer insight into how more
+complicated instruction sets might actually be detrimental to compiler writers
+and assembly-language writers, and they propose why RISC might elleviate some of
+these burdens.
+\paragraph{\textbf{Context}}
+I don't really know the context. I don't know what the modern stance is on RISC
+versus CISC.
+\paragraph{\textbf{Discussion Points}}
+\begin{enumerate}
+    \item Something that strikes me when reading these older papers is that it
+    seems that the general mentality at the time was that there may not be a
+    need or purpose for more complex or general-purpose computers, or maybe
+    even, it seems that there was air of mysticism and uncertainty around how
+    general-purpose computer technologies would unfold or would benefit users.
+    This is demonstrated in this paper in the abstract: ``If we review the
+    history of computer families we find that the most common architectural
+    change is the trend toward ever more complex machines." Do I have a correct
+    assessment of the situation?
+    \item Given (1) is a correct assessment, it seems that modern technologies
+    might be at a similar empass.
+    \item Patternson and Ditzel's complaints about how code compaction interacts
+    with marketing strategies seems to be similar to my own thoughts on machine
+    learning and the use of giant machines for training by ML giants (DeepMind,
+    Google AI, etc).
+\end{enumerate}
+\paragraph{\textbf{Significance}}
+
+\section {Comments on the Case for RISC \cite{clark1980comments}}
+
+\paragraph{\textbf{Summary}}
+This paper critiqued The Case for the Reduced Instruction Set Computer
+\cite{patterson1980case}, going through point by point describing by each
+assertion made as incorrect or misguided. The authors make individual points,
+but their overall critique seems to be that they feel the original paper is
+baseless. Clark and Strecker argue that Patternson and Ditzel did not provide
+sufficient evidence to back up their claims, and in fact offer evidence to the
+contrary for many of them.
+
+Clark and Strecker seem to believe that the case for RISC versus CISC is on a
+very case-by-case basis. They state that it could be the case that more
+specialzed, complex instructions have an advantage over combinations of smaller
+instructions, in specific scenarios. They believe that instruction set
+complexity cannot be measured by instruction count, contrary to the foundation
+of Patternson and Ditzel's paper.
+
+My favorite line was ``Annecdotal accounts of irrational implementations are
+certainly interesting.''
+\paragraph{\textbf{Context}}
+This came out the same year as the original paper that it is critiquing.
+\paragraph{\textbf{Discussion Points}}
+\begin{enumerate}
+    \item So what exactly is RISC versus CISC?
+    \item What would all four of these authors think of modern lanaguages?
+    \item Of these two paper, which is the more generally "accepted" one, and why?
+\end{enumerate}
+\paragraph{\textbf{Significance}}
+It's unclear to me what the significance was of the original paper, but I
+imagine the situation must be significant enough to warrant a published
+critique.
