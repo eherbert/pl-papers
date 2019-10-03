@@ -11,6 +11,7 @@
 1964 & Architecture of the IBM System/ 360 \cite{amdahl1964architecture} \\
 1965 & Cramming More Components onto Integrated Circuits \cite{moore1965cramming} \\
 1967 & Validity of the Single Processor Approach to Achieving Large Scale Computing Capabilities \cite{amdahl1967validity} \\
+1979 & Experience with Process and Monitors in Mesa \cite{lampson1980experience} \\
 1980 & The Case for the Reduced Instruction Set Computer \cite{patterson1980case} \\
      & Comments on the Case for RISC \cite{clark1980comments} \\
 1988 & Garbage Collection in an Uncooperative Environment \cite{boehm1988garbage} \\
@@ -444,4 +445,41 @@ complicated and contain multi-cycle instructions.
     automatic parallelisation? Does this exist?
     \item I did not understand their explanation of VLIW machines, can we go
     over this?
+\end{enumerate}
+
+\section {Experience with Process and Monitors in Mesa
+\cite{lampson1980experience}}
+
+\paragraph{\textbf{Summary}}
+Lampson and Redell discuss the integration of processes and monitors into Mesa,
+and already existing programming language. The work is motivated by a desire to
+implement parrallelization into Pilot, a program closely linked to Mesa. They
+authors discuss the mechanism of implementation, the actual implementation in
+Mesa, and applications that use Mesa.
+
+The notable contributions are the developments made to integrate processes and
+monitors with Mesa. Processes are integrated by means of `detach' and `join'.
+A processes detaches from its caller and is then joined in later, at a specific
+point in the code, once it has completed. This allows multiple processes to be
+executed asynchronously. Monitors are used to protect data, and data gaurded by
+a monitor can only be accessed within the body of the monitor procedure. A
+`notify' system is used, where processes establish conditions upon which some
+other process *may* be waiting for that condition to hold, and they sends out
+notifications about these conditions. It is up to the notified process if they
+perfectly meet that estimated condition or not. This allows one process waiting
+on a condition to execute, but there also exists a broadcast operation that
+allows all processes waiting on a condition to execute.
+
+The authors develop this work explicitly without considering security. The
+"system only supports one user", so the Mesa type system is sufficient. There is
+still also the possibility of race conditions and deadlocks.
+\paragraph{\textbf{Context}}
+This paper came out right before the RISC/ CISC papers, but about 10 years
+before the "Available Instruction-Level Parallelism for Superscalar and
+Superpipelined Machines" paper.
+\paragraph{\textbf{Discussion Points}}
+\begin{enumerate}
+    \item Did this paper contribute to the modern idea of Futures? The
+    description of Processes sounded eerily similar to Futures, although I don't
+    believe Futures employ the notify system.    
 \end{enumerate}
