@@ -11,9 +11,11 @@
 1964 & Architecture of the IBM System/ 360 \cite{amdahl1964architecture} \\
 1965 & Cramming More Components onto Integrated Circuits \cite{moore1965cramming} \\
 1967 & Validity of the Single Processor Approach to Achieving Large Scale Computing Capabilities \cite{amdahl1967validity} \\
+1978 & The UNIX Time- Sharing System \cite{ritchie1978unix} \\
 1979 & Experience with Process and Monitors in Mesa \cite{lampson1980experience} \\
 1980 & The Case for the Reduced Instruction Set Computer \cite{patterson1980case} \\
      & Comments on the Case for RISC \cite{clark1980comments} \\
+1983 & Hints for Computer System Design \cite{lampson1983hints} \\
 1988 & Garbage Collection in an Uncooperative Environment \cite{boehm1988garbage} \\
 1989 & Available Instruction-Level Parallelism for Superscalar and Superpipelined Machines \cite{jouppi1989available} \\
 2008 & Amdahl’s Law in the Multicore Era \cite{hill2008amdahl} \\
@@ -483,3 +485,69 @@ Superpipelined Machines" paper.
     description of Processes sounded eerily similar to Futures, although I don't
     believe Futures employ the notify system.    
 \end{enumerate}
+
+\section {The UNIX Time- Sharing System \cite{ritchie1978unix}}
+
+\paragraph{\textbf{Summary}}
+Ritchie and Thompson present the design of the UNIX system. They cover in detail
+the different aspects of the computer's design (file system, I/O, asynchronous
+processes, the shell) and discuss their importance and contribution to the UNIX
+system, and discuss
+
+As pointed out by the authors, it is not necessarily that the UNIX system
+implemented any particularly insane features, its that it does so in a way that
+is sustainable and abstract. Perhaps most importantly, the users are able to
+modify the system itself, as all system files are available. This allows users
+resolve errors quickly. The OS is modular and abstract and handles many
+processes for the user automatically - address spaces are organized by program,
+the OS implements I/O so that the user can use one I/O end-point, and others.
+
+\paragraph{\textbf{Context}}
+From the papers we have read, it seems that this paper came out after a bit of a
+lull. It was published 11 years after Validity of the Single Processor Approach
+to Achieving Large Scale Computing Capabilities, but then the MESA and RISC/
+CICS papers shortly after.
+
+\paragraph{\textbf{Discussion Points}}
+The paper discusses how severe size constraits on the system lead to
+innovations. Given what we discussed last week - that how modern hardware
+is sold by ``features'' - it seems to me that currently there are not enough
+imposed pressures upon hardware to foster innovations. This is perhaps akin
+to natural selection.
+\begin{enumerate}
+    \item How might different imposed pressures have lead to different modern
+    hardware?
+    \item Is our hardware development timeline `inevitable'?
+\end{enumerate}
+
+\paragraph{\textbf{Significance}}
+UNIX is widely used today in different forms. Luckily it does not cost \$40,000
+per installation.
+
+\section {Hints for Computer System Design \cite{lampson1983hints}}
+
+\paragraph{\textbf{Summary}}
+This paper was pretty straightforward, not a lot of technical detail. In my own
+words, I would summarize the message into a few key points.
+
+Make components of the system as simple as they need to be, but not more. 
+Components should be modular and ``pure''. As in, each component should be a
+dedicated layer of abstraction that is focused on performing one particular
+task. Artifacting should be reduced across components. Error and faults should
+be handled modularly.
+
+A good and complete system is better than a great and incomplete system. All
+components of the system should be fleshed out, reliable, and safe. Components
+should not be to abstract or general to where they cannot handle particular
+cases.
+
+Users care about a working system more than they care about the most
+state-of-the-art technically-advanced system.
+
+\paragraph{\textbf{Discussion Points}}
+\begin{enumerate}
+    \item Are any of these guidelines particularly important over the others?
+\end{enumerate}
+
+\paragraph{\textbf{Significance}}
+These are good guidelines. I suspect I will revist this paper in the future.
