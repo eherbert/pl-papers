@@ -15,6 +15,7 @@
 1979 & Experience with Process and Monitors in Mesa \cite{lampson1980experience} \\
 1980 & The Case for the Reduced Instruction Set Computer \cite{patterson1980case} \\
      & Comments on the Case for RISC \cite{clark1980comments} \\
+1982 & Gprof: A call graph execution profiler \cite{graham1982gprof} \\
 1983 & Hints for Computer System Design \cite{lampson1983hints} \\
 1988 & Garbage Collection in an Uncooperative Environment \cite{boehm1988garbage} \\
 1989 & Available Instruction-Level Parallelism for Superscalar and Superpipelined Machines \cite{jouppi1989available} \\
@@ -332,7 +333,6 @@ it though.
 
 \section {Amdahl’s Law in the Multicore Era \cite{hill2008amdahl}}
 
-
 \paragraph{\textbf{Summary}}
 This paper applied Amdahl's Law to multicore chips, and to do so the authors
 present a novel cost model that considers the number and performance of
@@ -551,3 +551,44 @@ state-of-the-art technically-advanced system.
 
 \paragraph{\textbf{Significance}}
 These are good guidelines. I suspect I will revist this paper in the future.
+
+\section {Gprof: A call graph execution profiler \cite{graham1982gprof}}
+
+\paragraph{\textbf{Summary}}
+This paper presents gprof, a program evaluation tool that focuses on presenting
+information about execution organiztion and execution time. This is done by
+analyzing program call graphs, where the nodes of the call graphs are
+sub-routines and the arcs between nodes are the "who called whom." Gprof
+collects both execution counts and execution times to complete the suite,
+although both of these present their own unique implementation challenges. The
+resulting evaluation is presented to the user to help them analyze either
+components of their own programs or components of unknown programs.
+
+Gprof is designed to be as lightweight as possible. Only minimal logging
+information is captured during dynamic execution. Once a program completes,
+gprof completes the data collection and analysis and only then performs the
+computationally intensive components. The authors discuss how to transform
+large recursion call graphs into a set of strong connected components, but they
+note that this fails for *very* large recursion call graphs.
+
+\paragraph{\textbf{Context}}
+The next paper for this week references gprof so it must be important. Also,
+recently I came across a paper that implemented a tracing JIT for Racket that
+used call graphs and continuation frames to detect recursion while tracing. I
+suspect that their work is derived in some capacity from this work.
+
+\paragraph{\textbf{Discussion Points}}
+\begin{enumerate}
+    \item This evalution tool seems useful. Perhaps this is what the second
+    paper covers, but this tool is not compatible with current technologies and
+    architectural toolchains, so to speak. One of the systems lunch speakers
+    discussed how decreasing the variance in latencies for a component of a
+    serverless system could decrease the average end-to-end latency. That being
+    said, I don't believe the reported metrics from gprof are detailed enough to
+    express these complicated relationships.
+\end{enumerate}
+
+\paragraph{\textbf{Significance}}
+I do not know the significance. I suspect that this is an important paper.
+Although this paper presents an evaluation system, its methodology is
+application-neutral.
