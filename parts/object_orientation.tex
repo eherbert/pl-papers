@@ -1,11 +1,12 @@
 \chapter {Object Orientated Programming}
 
-\section{Java}
-
-\begin{description}
-  \item[\href{http://homepages.inf.ed.ac.uk/wadler/papers/expression/expression.txt}{The Expression Problem}] {\cite{wadler1998expression}.
-    \\ Proposes a solution to the expression problem - "goal is to define a datatype by cases, where one can add new cases to the datatype and new functions over the datatype, without recompiling existing code and while retaining static type safety." Solution in GJ creates a series of types that are dependent on one another, and relies on Interfaces for expression evaluation. Type variables can be indexed by any inner class defined in the variable's bound.
-    \begin{itemize}
-      \item \question{I'm not sure I know what "indexing a type variable" is ?}
-    \end{itemize}}
-\end{description}
+\section {The Expression Problem \cite{wadler1998expression}}
+Proposes a solution to the expression problem - "goal is to define a datatype by
+cases, where one can add new cases to the datatype and new functions over the
+datatype, without recompiling existing code and while retaining static type
+safety." Solution in GJ creates a series of types that are dependent on one
+another, and relies on Interfaces for expression evaluation. Type variables can
+be indexed by any inner class defined in the variable's bound.
+\begin{itemize}
+    \item \question{I'm not sure I know what "indexing a type variable" is ?}
+\end{itemize}

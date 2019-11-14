@@ -1,12 +1,10 @@
 \documentclass{report}
+\usepackage{std}
 
 % CUSTOM COMMANDS
 % \question{argument}
 
-\input{./parts/preamble.tex}
-
 \begin{document}
-\pagenumbering{gobble}
 
 \maketitle
 \tableofcontents
@@ -19,8 +17,9 @@
 \input{./parts/simulation.tex}
 \input{./parts/software.tex}
 \input{./parts/systems_history.tex}
+\input{./parts/containerless.tex}
 
-\bibliography{./parts/references}
+\bibliography{references}
 \bibliographystyle{plain}
 
 \end{document}
