@@ -18,8 +18,17 @@
 1982 & Gprof: A call graph execution profiler \cite{graham1982gprof} \\
 1983 & Hints for Computer System Design \cite{lampson1983hints} \\
 1988 & Garbage Collection in an Uncooperative Environment \cite{boehm1988garbage} \\
+     & A Case for Redundant Arrays of Inexpensive Disks (RAID) \cite{patterson1988case} \\
 1989 & Available Instruction-Level Parallelism for Superscalar and Superpipelined Machines \cite{jouppi1989available} \\
+1990 & An Empirical Study of the Reliability of UNIX Utilities \cite{miller1990empirical} \\
+2004 & Enhancing Server Availability and Security Through Failure-Oblivious Computing \cite{rinard2004enhancing} \\
+2005 & DART: Directed Automated Random Testing \cite{godefroid2005dart} \\
+2006 & DieHard: Probabilistic Memory Safety for Unsafe Languages \cite{berger2006diehard} \\
+2007 & Valgrind: A Framework for Heavyweight Dynamic Binary Instrumentation \cite{nethercote2007valgrind} \\
 2008 & Amdahl’s Law in the Multicore Era \cite{hill2008amdahl} \\
+     & Bitcoin: A Peer-to-Peer Electronic Cash System \cite{nakamoto2008bitcoin} \\
+2010 & A Few Billion Lines of Code Later: Using Static Analysis to Find Bugs in the Real World \cite{bessey2010few} \\
+2015 & Coz: Finding Code that Counts with Causal Profiling \cite{curtsinger2015c} \\
 2017 & Bringing the Web Up to Speed with WebAssembly \cite{haas2017bringing} \\
 
 \end{tabular}
@@ -551,6 +560,128 @@ state-of-the-art technically-advanced system.
 \paragraph{\textbf{Significance}}
 These are good guidelines. I suspect I will revist this paper in the future.
 
+\section {A Case for Redundant Arrays of Inexpensive Disks (RAID) \cite{patterson1988case}}
+
+\paragraph{\textbf{Summary}}
+This paper introduces Redundant Arrays of Inexpensive Disks (RAID), a method of
+improving I/O by keeping redundant copies of information on multiple hard disks.
+Because the information can be recovered when a disk read fails, this improves
+the performance of I/O and provides better fault tolerance. This is achieved
+through the use of multiple disks, disk mirroring, and disk striping.
+
+Although the premise is ubiquitous, implementations of RAID can be application
+specific. The others discuss five "levels" of implementations of RAID with
+differing performance and reliability. The first level is using disk mirroring
+without disk striping, where multiple drives duplicate storage. The second level
+uses disk striping and interleaving storage checks to reduce the overall amount
+of required space. The third level reduces redundancy by employing an operation
+that can reconstruct information lost during a read failure. The fourth level
+improves performance by allowing for multiple I/O operations in parallel, on
+different disks. The fifth level distributes the data and check information
+across all disks, so write operations can occur in parallel.
+
+\paragraph{\textbf{Context}}
+Because RAID is a general idea and not a specific implementation, I imagine that
+it is still relevant today. Hardware has changed, but the desired for increased
+I/O performance with increased fault tolerance has not.
+
+\paragraph{\textbf{Discussion Points}}
+\begin{enumerate}
+    \item It isn't clear to me which of these levels is the ``best''?
+    \item Are there any limitations to which level can be used with which
+    application? As in, ``don't use level 3 if your application has this
+    behavior'' type thing.
+\end{enumerate}
+
+\paragraph{\textbf{Significance}}
+This paper likely improved the performance and fault tolerance of I/O.
+
+\section {Enhancing Server Availability and Security Through Failure-Oblivious Computing \cite{rinard2004enhancing}}
+
+\paragraph{\textbf{Summary}}
+This paper presents failure-oblivious computing, a computing technique that
+allows servers to execute through memory errors without memory corruption. The
+compiler inserts checks that dynamically detect invalid memory accesses. When
+one of these checks fails, the generated code discards the invalid writes and
+returns manufactured values. This enables the server to continue normal
+execution.
+
+\paragraph{\textbf{Context}}
+This paper was published in 2004, before the dawn of serverless computing. I
+would be interested to see if there have been any updates to this paper tailored
+towards serverless. Fault tolerance with serverless is more straightforward
+though - if a serverless function does something bad, either reexecute it or
+refuse to execute it. Serverless programs are tolerant to reexecution, so this
+paradigm is compatible with easy fault tolerance.
+
+\paragraph{\textbf{Discussion Points}}
+I have mixed feelings about this paper. On one hand it makes sense, servers
+should have robust fault tolerance so that they can manage many distinct
+processes. But on the other hand, I feel uneasy about this claim in the
+conclusion:
+\textit{One of the major long-term goals of computer science has been
+understanding how to build more robust, resilient programs that can flexibly and
+successfully cope with unanticipated situations. Our research suggests that,
+remarkably, current systems may already have a substantial capacity for
+exhibiting this kind of desirable behavior if we only provide a way for them to
+ignore their errors, protect their data structures from damage, and continue
+to execute.}
+Okay ? Yes, if we ignore errors we will no longer have errors. I am likely
+misinterpreting this, can we clarify?
+
+\paragraph{\textbf{Significance}}
+Servers should have high fault tolerance, as they fulfill many requests and can
+receive any number of bad actor requests. In particular, this fault tolerance
+should be invisible and inevitable to programs (as if it wasn't then the actual
+problem has not be addressed), and this paper achieves that. The server
+programming paradigm has shifted this this paper was published. I actually know
+less about old methods than I do current methods, but currently serverless
+programs are just run in individualized "memory safe" virtualized containers.
+So, some of the motivation for this work (prevent corrupted shared memory) has
+expired.
+
+\section {DieHard: Probabilistic Memory Safety for Unsafe Languages \cite{berger2006diehard}}
+
+\paragraph{\textbf{Summary}}
+DieHard presents a method of soundly tolerating memory errors in unsafe C and
+C++ programs. It does so by employing probabilistic memory safety through
+randomization and replication. The memory management system randomizes the
+locations of objects in memory to give an approximation of an infinite-sized
+heap. Replication of this randomized memory can be used to give additional fault
+tolerance. This randomized allocator operates transparently to programmers, and
+helps mitigate against buffer overflows, dangling pointers, and reads of
+uninitialized data.
+
+Making multiple copies of memory can require a lot of space, and the authors
+specify that DieHard is best suited for systems in which memory footprint is
+less important than reliability and security. This is a fair trade-off, as in
+the modern day there seems to be fewer constraints on memory size than the other
+factors.
+
+\paragraph{\textbf{Context}}
+I know that the authors have since published another paper, DieHarder, so I
+assume that the work has changed somewhat. I have not read this other paper
+though so I cannot say to exactly what extent. I believe the ideas presented
+though are distinct from the implementation. It is likely the case that
+probabilistic memory safety is still relevant.
+
+\paragraph{\textbf{Discussion Points}}
+\begin{enumerate}
+    \item It seems that the replication strategy employed by DieHard is, at
+    least somewhat, related to the replication strategy employed by RAID. Is
+    there any formal connection here, or just loosely similar?
+    \item Could something like this (or some other randomization algorithm) be
+    used to mitigate against Spectre attacks? Say I have 3 copies of memory,
+    each of them randomized. And every access read from a random one of the 3.
+    Of course, this would take up ample space, but systems are large enough now
+    that it may be reasonable.
+\end{enumerate}
+
+\paragraph{\textbf{Significance}}
+A lot of important programs are written in C and C++. And a lot of compilers
+target C and C++. Research that improves memory error tolerance in these
+programs is significant.
+
 \section {Gprof: A call graph execution profiler \cite{graham1982gprof}}
 
 \paragraph{\textbf{Summary}}
@@ -591,3 +722,176 @@ suspect that their work is derived in some capacity from this work.
 I do not know the significance. I suspect that this is an important paper.
 Although this paper presents an evaluation system, its methodology is
 application-neutral.
+
+\section {Coz: Finding Code that Counts with Causal Profiling \cite{curtsinger2015c}}
+
+\paragraph{\textbf{Summary}}
+This paper present Coz, a causal profiler that uses virtual speedups to better
+determine possible "entry-points", so to speak, of improving performance. Coz
+implements virtual speedups through alternative physical slowdowns. By slowing
+down the remainder of code, it "speeds-up" the non slowed-down code. This
+information is captured and the processes is repeated. After this is complete,
+the user is presented with a causal profile with information about LOC and
+virtual speedups.
+
+Coz can only profile code that is in your main file. It would be useful to
+expand this system so that it can profile dependencies. However, some of that
+information is retained, where if the main file calls a function from another
+file, that information will be captured, just not in granular detail. Using Coz
+also incurs some amount of overhead, but because this is an evaluation
+mechanism, the additional overhead is not that important.
+
+\paragraph{\textbf{Context}}
+Coz may or may not still be maintained, but causal profiling is a ubiquitous
+idea. It would be interesting to have this type of behavior implemented into a
+compiler of somesort.
+
+\paragraph{\textbf{Discussion Points}}
+\begin{enumerate}
+    \item I honestly did not understand the intuition behind finding the 0\%
+    baseline. Can this be covered briefly?
+    \item What if one LOC has 100 different computational elements? Does Coz
+    split these up?
+\end{enumerate}
+
+\section {An Empirical Study of the Reliability of UNIX Utilities \cite{miller1990empirical}}
+
+\paragraph{\textbf{Summary}}
+This paper describes the first attempt at fuzz testing. Fuzz testing is a method
+of testing that employs randomly, or pseudo-randomly, generated inputs to detect
+errors that programmers may have otherwise missed. A big portion of what fuzz
+testing does is ensuring that I/O operations are fault-tolerant, however there
+has been recent work to extend fuzz testing to include detecting more complex
+logical errors in programs.
+
+This paper is the first to enter this domain. The method proposed is one that
+generates random input strings, tests these input strings on the program to
+detect crashes, and then reports the types of strings that cause crashes. Aside
+from time and compute resources, fuzz testing is relatively "cheap" and this is
+noted by the authors.
+
+\paragraph{\textbf{Context}}
+Fuzz testing is gaining popularity and in my opinion, is super cool. The
+methodology presented in the paper is the foundation for modern fuzz testing.
+
+\paragraph{\textbf{Discussion Points}}
+\begin{enumerate}
+    \item Could fuzz testing be used to test other factors of the program? i.e.
+    things that are not input. Does my allocator work if I malloc an array of
+    any size between 0 and 99999999?
+    \item What about combining fuzz testing, causation analysis, and machine
+    learning? That might be interesting.
+\end{enumerate}
+
+\paragraph{\textbf{Significance}}
+I expect fuzz testing to become more significant in upcoming years.
+
+\section {DART: Directed Automated Random Testing \cite{godefroid2005dart}}
+
+\paragraph{\textbf{Summary}}
+This paper describes DART, a method of testing that uses a combination of
+automatically detecting the interface of the system, generating a test suite for
+this interface, and using the test suite to detect errors. This leads to
+completing automated testing - one of main research objective of DART. This is
+accomplished through combining symbolic reasoning when possible and
+randomization to introduce concrete values everywhere else.
+
+DART is innovative because it strives to understand and explore all paths in an
+execution tree, which is more robust than just using fuzzing to test random
+inputs. The symbolic analysis component is able to add soundness and robustness,
+while the randomization components supplies real values for testing.
+
+\paragraph{\textbf{Context}}
+While its methodology is timeless, I haven't heard anything about it recently.
+
+\section {A Few Billion Lines of Code Later: Using Static Analysis to Find Bugs in the Real World \cite{bessey2010few}}
+
+\paragraph{\textbf{Summary}}
+This paper introduces a system of static analysis that can be used to find
+errors. It can find simple errors (data races) or system-specific errors. It
+operates under the assumption that programmers tend to write code that is akin
+to "programming rules."
+
+One of their core observations is that you cannot check code that you cannot
+see, and the authors note that this is particularly difficult when attempting to
+build an analysis tool for real-world systems, as real-world systems are large
+and contain many simultaneous working components. They also note that it can be
+a flaw to separate development environment from production environment, as this
+introduces new variables.
+
+\paragraph{\textbf{Context}}
+The ideas that they present are still relevant today. Programmers aren't
+perfect.
+
+\paragraph{\textbf{Discussion Points}}
+\begin{enumerate}
+    \item I have some contentions about their assumptions. A programmer who is
+    most likely to abide by programming rules is a good programmer already, and
+    thus they are less likely to have bugs. I suppose this is irrelevant though
+    because the tool is just checking for rule disobedience and not the other
+    way around.
+    \item Are there any languages or compilers that have this built-in? Other
+    than Idris or Coq.
+    \item I am interested in this idea in terms of fairness. It would be
+    interesting to build an analysis tool for ML that detects fairness.
+\end{enumerate}
+
+\section {Valgrind: A Framework for Heavyweight Dynamic Binary Instrumentation \cite{nethercote2007valgrind}}
+
+\paragraph{\textbf{Summary}}
+This paper introduces Valgrind, a dynamic binary analysis (DBA) tool that uses
+dynamic binary instrumentation (DBI). To do this, it implements shadow values
+with a DBI framework.
+
+This paper discusses the internals of Valgrind, discussing the Valgrind IR and
+optimizations. These optimizations are necessary because using Valgrind is slow.
+However, the incurred slowdown is an appropriate tradeoff because it is only
+used for analysis and can ultimately lead to better systems.
+
+I just skimmed this paper unfortunately, this is a bad review!!
+
+\paragraph{\textbf{Context}}
+People still use valgrind. I haven't noticed much of a slower performance, so
+maybe there has been more effort in optimizations.
+
+\paragraph{\textbf{Significance}}
+People still use valgrind today.
+
+\section {Bitcoin: A Peer-to-Peer Electronic Cash System \cite{nakamoto2008bitcoin}}
+
+\paragraph{\textbf{Summary}}
+This paper introduces bitcoin, a peer-to-peer payment system that does not rely
+on a trusted third party. Coins are constructed by a chain of accepted
+transactions. Each transaction is publicly broadcast, and actors in the system
+vote to either accept or reject the transaction. They accept chains by building
+on them, and they build on chains by computing computationally intensive
+programs. This means that if any chain were to be tampered with, the bad actors
+would have to recompute every computationally intensive program in the chain.
+
+Bitcoin only works if the majority of the actors in the system are good actors,
+for a majority of bad actors could band together to accept inaccurate chains.
+Unless I missed this in the paper, the authors don't discuss how they could
+prevent an influx of bad actors in a system. They mention that actors are
+counted based on CPU's and not IP's which helps, but doesn't completely
+mitigate.
+
+\paragraph{\textbf{Context}}
+Bitcoin, and other cryptocurrencies, are becoming more popular.
+
+\paragraph{\textbf{Discussion Points}}
+\begin{enumerate}
+    \item Maybe I am just not understanding, but I am still confused about how
+    the currency enters the system. It makes sense that CPU power and
+    electricity are expended to create the chains, but why is this honored as
+    something of value? I can run 10000 python matrix operations, but this won't
+    be worth anything. Maybe another way of phrasing it is - why have agencies
+    determined that this is a form of currency that they will accept?
+    \item Facebook wants to start Libra. A bit contention from the US government
+    is this issue of anonymous wallets. But in order for cryptocurrency to work,
+    all payments must be broadcast, ideally with those payments anonymized. So
+    maybe I am misunderstanding, but would a lack of anonymous wallets mean that
+    all transactions would be broadcast un-anonymized?
+\end{enumerate}
+
+\paragraph{\textbf{Significance}}
+I believe this is the first paper to introduce bitcoin, so, very significant.
