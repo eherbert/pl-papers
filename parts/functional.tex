@@ -21,3 +21,41 @@ where "scars" hold tree structure for frequently visited elements.
     \item \question{Binary trees are shown, but binary tree example doesn't
     allow for any data stored in the tree?}
 \end{itemize}
+
+\section{Monads for functional programming \cite{wadler1995monads}}
+Monads might be thought of as a way to add impure or side-effect behavior to
+pure languages (Haskell, etc.). If one has a function of type $a \rightarrow b$
+(a function from $a$ to $b$), it can be modified to include side effects by
+$a \rightarrow M b$ (a function from $a$ to $b$, with a possible additional
+effect captured by $M$.) A monad $(M, \mathit{unit}, \star)$ has three
+components:
+
+\begin{enumerate}
+    \item Type constructor $M$
+    \item Operation $\mathit{unit}$ that turns a value into the computation that
+    returns that value and does nothing else:
+    \( \mathit{unit} :: a \rightarrow M a \)
+    \item Operation $\star$ which allows us to apply a function of type
+    $a \rightarrow M b$ to a computation of type $M a$.
+    \( \star :: M a \rightarrow (a \rightarrow M b)\)
+\end{enumerate}
+
+You can write a monad as $m \star \lambda a . n$. The form $\lambda a . n$ is a
+lambda expression, where $a$ is scoped within $n$. This can be read as, perform
+computation $m$, then bind $a$ to the result, such that $a$ is then scoped
+within $n$. In other words ``\lstinline|let a = m in n|.'' Monads also have
+several properties:
+
+\begin{enumerate}
+    \item[Left unit] $\textit{unit } a \star \lambda b . n = n[a/b]$. Which is
+    to say, Compute $a$ and bind the result to $b$ in $n$. This is equivalent to
+    evaluating $n$ with all instances of $a$ substituted for $b$.
+    \item[Right unit] $m \star \lambda a . \textit{unit } a = m$. Which is to
+    say, compute $m$ and bind the result to $a$ and return $a$.
+    \item[Associative] $m \star (\lambda a . n \star \lambda b . o) =
+    (m \star \lambda a . n) \star \lambda b . o$
+\end{enumerate}
+
+``A binary operation with left and right unit that is associative is called a
+monoid. A monad differs from a monoid in that the right operand involves a
+binding operation.''
